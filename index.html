@@ -36,24 +36,77 @@
   nav ul { list-style: none; padding: 0; margin: .4em 0 0;
            display: flex; flex-wrap: wrap; gap: .5em 1.4em; }
   nav li { margin: 0; }
+  /* ---- language: one language at a time, chosen from the device ---- */
+  .js section.lang { display: none; }
+  html[data-lang="en"] section.lang[lang="en"], html[data-lang="th"] section.lang[lang="th"],
+  html[data-lang="ja"] section.lang[lang="ja"], html[data-lang="ko"] section.lang[lang="ko"] { display: block; }
+  html:not(.js) section.lang + section.lang { margin-top: 3.4em; padding-top: 2em; border-top: 1px solid var(--rule); }
+  .bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+         gap: 10px 18px; margin: 0 0 1.8em; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .lang-menu { position: relative; }
+  html:not(.js) .lang-menu { display: none; }
+  .lang-btn { font: inherit; font-size: .92em; display: inline-flex; align-items: center; gap: 7px;
+              height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--rule);
+              background: var(--chip); color: var(--fg); cursor: pointer; }
+  .lang-btn svg { width: 16px; height: 16px; flex: none; }
+  .lang-btn .caret { font-size: .7em; color: var(--muted); }
+  .lang-btn:focus-visible, .lang-list button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .lang-list { position: absolute; top: calc(100% + 6px); left: 0; z-index: 10; list-style: none;
+               margin: 0; padding: 6px; min-width: 170px; background: var(--bg);
+               border: 1px solid var(--rule); border-radius: 10px; box-shadow: 0 10px 28px rgba(0,0,0,.14); }
+  .lang-list li { margin: 0; }
+  .lang-list button { font: inherit; width: 100%; display: flex; justify-content: space-between; gap: 12px;
+                      text-align: left; padding: 8px 10px; border: 0; border-radius: 6px;
+                      background: none; color: var(--fg); cursor: pointer; }
+  .lang-list button:hover { background: var(--chip); }
+  .lang-list button[aria-checked="true"] { color: var(--accent); font-weight: 600; }
+  .lang-list button[aria-checked="true"]::after { content: "✓"; }
+  .site { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: .92em; }
+  .site a { text-decoration: none; }
+  .site a:hover { text-decoration: underline; }
+  .site a[aria-current="page"] { color: var(--fg); font-weight: 600; }
 </style>
+<script>
+/* Pick the page language before anything paints: a ?lang= link, then a saved
+   choice, then an old #th-style anchor, then the device's language list. */
+(function () {
+  var L = ['en', 'th', 'ja', 'ko'], l = null, d = document.documentElement;
+  try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+  if (L.indexOf(l) < 0) { try { l = localStorage.getItem('tb-lang'); } catch (e) { l = null; } }
+  if (L.indexOf(l) < 0) l = location.hash.slice(1);
+  if (L.indexOf(l) < 0) {
+    l = 'en';
+    var n = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+    for (var i = 0; i < n.length; i++) { var p = String(n[i]).toLowerCase().slice(0, 2); if (L.indexOf(p) >= 0) { l = p; break; } }
+  }
+  d.lang = l; d.setAttribute('data-lang', l); d.className += ' js';
+})();
+</script>
+<header class="bar" data-page="privacy">
+  <div class="lang-menu">
+    <button type="button" class="lang-btn" id="lang-btn" aria-haspopup="menu" aria-expanded="false" aria-controls="lang-list">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>
+      <span id="lang-cur">English</span><span class="caret" aria-hidden="true">▼</span>
+    </button>
+    <ul class="lang-list" id="lang-list" role="menu" hidden>
+      <li><button type="button" role="menuitemradio" data-set="en">English</button></li>
+      <li><button type="button" role="menuitemradio" data-set="th">ไทย</button></li>
+      <li><button type="button" role="menuitemradio" data-set="ja">日本語</button></li>
+      <li><button type="button" role="menuitemradio" data-set="ko">한국어</button></li>
+    </ul>
+  </div>
+  <div class="site">
+    <a href="./" data-href="./" data-ui="privacy">Privacy Policy</a>
+    <a href="delete-data.html" data-href="delete-data.html" data-ui="delete">Delete your data</a>
+    <a href="feedback.html" data-href="feedback.html" data-ui="feedback">Send feedback</a>
+  </div>
+</header>
 
+<main>
+<!-- ==================== ENGLISH ==================== -->
+<section class="lang" lang="en">
 <h1>TimeBoard – Privacy Policy</h1>
 <p class="updated"><em>Last updated: 16 September 2026</em></p>
-
-<nav>
-  <strong>Languages · ภาษา · 言語 · 언어</strong>
-  <ul>
-    <li><a href="#en">English</a></li>
-    <li><a href="#th">ภาษาไทย</a></li>
-    <li><a href="#ja">日本語</a></li>
-    <li><a href="#ko">한국어</a></li>
-  </ul>
-  <p style="margin:.7em 0 0"><a href="delete-data.html">How to delete your data · วิธีลบข้อมูลของคุณ · データの削除方法 · 데이터 삭제 방법</a><br><a href="feedback.html">Send feedback · ส่ง feedback</a></p>
-</nav>
-
-<!-- ==================== ENGLISH ==================== -->
-<h2 id="en" class="lang-head">English</h2>
 
 <p>TimeBoard ("the app") is a countdown board for the dates you care about. This policy explains what the app stores, why it asks for the permissions it asks for, and what control you have. <strong>The app has no user accounts and no server of ours.</strong></p>
 
@@ -135,10 +188,12 @@
 
 <p class="version">This policy describes TimeBoard version 0.3.0.</p>
 
-<hr>
+</section>
 
 <!-- ==================== ไทย ==================== -->
-<h2 id="th" class="lang-head">ภาษาไทย</h2>
+<section class="lang" lang="th">
+<h1>TimeBoard – นโยบายความเป็นส่วนตัว</h1>
+<p class="updated"><em>อัปเดตล่าสุด: 16 กันยายน 2569 (2026)</em></p>
 
 <p>TimeBoard ("แอป") เป็นกระดานนับถอยหลังสำหรับวันสำคัญของคุณ นโยบายนี้อธิบายว่าแอปเก็บอะไรบ้าง ขอสิทธิ์แต่ละอย่างไปทำไม และคุณควบคุมอะไรได้บ้าง <strong>แอปไม่มีระบบบัญชีผู้ใช้ และเราไม่มีเซิร์ฟเวอร์ใด ๆ</strong></p>
 
@@ -220,10 +275,12 @@
 
 <p class="version">นโยบายนี้อธิบาย TimeBoard เวอร์ชัน 0.3.0</p>
 
-<hr>
+</section>
 
 <!-- ==================== 日本語 ==================== -->
-<h2 id="ja" class="lang-head">日本語</h2>
+<section class="lang" lang="ja">
+<h1>TimeBoard – プライバシーポリシー</h1>
+<p class="updated"><em>最終更新日: 2026年9月16日</em></p>
 
 <p>TimeBoard（以下「本アプリ」）は、大切な日までの残り時間を並べておくカウントダウンボードです。本ポリシーでは、本アプリが何を保存するのか、なぜその権限を求めるのか、ユーザーが何を管理できるのかを説明します。<strong>本アプリにはユーザーアカウントがなく、当社のサーバーもありません。</strong></p>
 
@@ -305,10 +362,12 @@
 
 <p class="version">本ポリシーは TimeBoard バージョン 0.3.0 についての記載です。</p>
 
-<hr>
+</section>
 
 <!-- ==================== 한국어 ==================== -->
-<h2 id="ko" class="lang-head">한국어</h2>
+<section class="lang" lang="ko">
+<h1>TimeBoard – 개인정보처리방침</h1>
+<p class="updated"><em>최종 업데이트: 2026년 9월 16일</em></p>
 
 <p>TimeBoard(이하 "앱")는 소중한 날짜까지 남은 시간을 한눈에 보여주는 카운트다운 보드입니다. 이 정책은 앱이 무엇을 저장하는지, 각 권한을 왜 요청하는지, 이용자가 무엇을 통제할 수 있는지 설명합니다. <strong>앱에는 계정 기능이 없고, 저희가 운영하는 서버도 없습니다.</strong></p>
 
@@ -389,3 +448,58 @@
 </div>
 
 <p class="version">이 정책은 TimeBoard 버전 0.3.0을 설명합니다.</p>
+</section>
+</main>
+
+<script>
+/* Language menu (top left). Shows one language; a choice is remembered and
+   carried to the other pages with ?lang=. Pages can listen for "langchange". */
+(function () {
+  var NAMES = { en: 'English', th: 'ไทย', ja: '日本語', ko: '한국어' };
+  var UI = {
+    en: { privacy: 'Privacy Policy', delete: 'Delete your data', feedback: 'Send feedback', menu: 'Language' },
+    th: { privacy: 'นโยบายความเป็นส่วนตัว', delete: 'ลบข้อมูลของคุณ', feedback: 'ส่งความคิดเห็น', menu: 'ภาษา' },
+    ja: { privacy: 'プライバシーポリシー', delete: 'データの削除', feedback: 'フィードバック', menu: '言語' },
+    ko: { privacy: '개인정보처리방침', delete: '데이터 삭제', feedback: '피드백 보내기', menu: '언어' }
+  };
+  var d = document.documentElement, bar = document.querySelector('.bar'), page = bar.getAttribute('data-page');
+  var btn = document.getElementById('lang-btn'), list = document.getElementById('lang-list');
+  var items = [].slice.call(list.querySelectorAll('button'));
+
+  function apply(l) {
+    d.lang = l; d.setAttribute('data-lang', l);
+    document.getElementById('lang-cur').textContent = NAMES[l];
+    btn.setAttribute('aria-label', UI[l].menu + ': ' + NAMES[l]);
+    items.forEach(function (b) { b.setAttribute('aria-checked', String(b.getAttribute('data-set') === l)); });
+    [].forEach.call(bar.querySelectorAll('.site a'), function (a) {
+      var key = a.getAttribute('data-ui');
+      a.textContent = UI[l][key];
+      a.href = a.getAttribute('data-href') + '?lang=' + l;
+      if (key === page) a.setAttribute('aria-current', 'page');
+    });
+    document.title = 'TimeBoard – ' + UI[l][page];
+    document.dispatchEvent(new CustomEvent('langchange', { detail: l }));
+  }
+  function close(focusBtn) { list.hidden = true; btn.setAttribute('aria-expanded', 'false'); if (focusBtn) btn.focus(); }
+  function open() {
+    list.hidden = false; btn.setAttribute('aria-expanded', 'true');
+    (items.filter(function (b) { return b.getAttribute('aria-checked') === 'true'; })[0] || items[0]).focus();
+  }
+  btn.addEventListener('click', function () { if (list.hidden) open(); else close(false); });
+  items.forEach(function (b, i) {
+    b.addEventListener('click', function () {
+      var l = b.getAttribute('data-set');
+      try { localStorage.setItem('tb-lang', l); } catch (e) {}
+      try { history.replaceState(null, '', location.pathname + '?lang=' + l); } catch (e) {}
+      apply(l); close(true); window.scrollTo(0, 0);
+    });
+    b.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown') { e.preventDefault(); items[(i + 1) % items.length].focus(); }
+      if (e.key === 'ArrowUp') { e.preventDefault(); items[(i + items.length - 1) % items.length].focus(); }
+    });
+  });
+  document.addEventListener('click', function (e) { if (!list.hidden && !e.target.closest('.lang-menu')) close(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !list.hidden) close(true); });
+  apply(d.getAttribute('data-lang') || 'en');
+})();
+</script>

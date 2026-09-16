@@ -1,39 +1,36 @@
-<!doctype html>
-<html lang="th">
-<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>TimeBoard – Feedback</title>
+<title>TimeBoard – Send feedback</title>
 <style>
   :root { --fg:#1F1D1A; --bg:#FFFFFF; --muted:#6B6259; --rule:#E2D9CD;
           --accent:#A8583C; --chip:rgba(127,127,127,.13); --field:#F7F4EF;
-          --star:#F2A83B; --ok:#4CAF7D; --err:#E5484D;
+          --star:#F2A83B; --ok:#3E8E63; --err:#D93D42;
           --rose:#E4717A; --sand:#E0A23C; --sky:#4A90E2; --mint:#4CAF7D; --stone:#8A857D; }
   @media (prefers-color-scheme: dark) {
     :root { --fg:#F1EDE6; --bg:#161514; --muted:#A79C8E; --rule:#3A352F;
-            --accent:#E8926A; --chip:rgba(255,255,255,.09); --field:#201E1C; }
+            --accent:#E8926A; --chip:rgba(255,255,255,.09); --field:#201E1C;
+            --ok:#5FBF8A; --err:#F06A6E; }
   }
   * { box-sizing: border-box; }
   body { font-family: system-ui, -apple-system, "Segoe UI", Roboto,
-         "Noto Sans Thai", sans-serif;
-         max-width: 640px; margin: 0 auto; padding: 24px 20px 72px;
-         line-height: 1.6; color: var(--fg); background: var(--bg); }
-  h1 { font-size: 1.55em; line-height: 1.3; margin: 0 0 .2em; }
-  h1 b { color: var(--accent); font-weight: 600; }
-  .sub { color: var(--muted); margin: 0 0 1.6em; }
+         "Noto Sans Thai", "Noto Sans JP", "Noto Sans KR", sans-serif;
+         max-width: 780px; margin: 0 auto; padding: 24px 20px 72px;
+         line-height: 1.68; color: var(--fg); background: var(--bg); }
+  h1 { font-size: 1.55em; line-height: 1.3; margin-bottom: .2em; }
   a { color: var(--accent); }
-  form { display: grid; gap: 20px; }
+  .updated { color: var(--muted); font-size: .98em; margin-top: 0; }
+  main form { max-width: 640px; margin-top: 1.6em; display: grid; gap: 20px; }
   fieldset { border: 0; padding: 0; margin: 0; min-width: 0; display: grid; gap: 8px; }
   legend, .l { font-size: .8em; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
                color: var(--muted); padding: 0; }
   .types { display: flex; flex-wrap: wrap; gap: 8px; }
   .types input { position: absolute; opacity: 0; width: 0; height: 0; }
-  .types label { height: 36px; padding: 0 14px; border-radius: 999px; display: inline-flex; align-items: center;
+  .types label { min-height: 36px; padding: 4px 14px; border-radius: 999px; display: inline-flex; align-items: center;
                  gap: 7px; font-size: .92em; border: 1px solid var(--rule); background: var(--chip); cursor: pointer; }
-  .types label i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+  .types label i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); flex: none; }
   .types input:checked + label { border-color: var(--c); box-shadow: inset 0 0 0 1px var(--c); background: var(--bg); }
   .types input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
-  .stars { display: flex; align-items: center; gap: 2px; }
+  .stars { display: flex; align-items: center; gap: 2px; flex-wrap: wrap; }
   .stars input { position: absolute; opacity: 0; width: 0; height: 0; }
   .stars label { width: 40px; height: 40px; display: grid; place-items: center; font-size: 26px;
                  color: var(--rule); cursor: pointer; border-radius: 8px; }
@@ -44,140 +41,333 @@
   @media (max-width: 460px) { .row { grid-template-columns: 1fr; } }
   input[type=text], select, textarea { font: inherit; color: var(--fg); background: var(--field);
     border: 1px solid var(--rule); border-radius: 10px; padding: 10px 12px; width: 100%; }
-  input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; border-color: var(--accent);
+  input[type=text]:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; border-color: var(--accent);
     box-shadow: 0 0 0 3px rgba(168,88,60,.2); }
   textarea { min-height: 130px; resize: vertical; }
   .count { font-size: .8em; color: var(--muted); text-align: right; }
   .actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
-  button { font: inherit; font-weight: 600; border-radius: 999px; height: 44px; padding: 0 22px; cursor: pointer;
+  .actions button { font: inherit; font-weight: 600; border-radius: 999px; min-height: 44px; padding: 0 22px; cursor: pointer;
            border: 1px solid var(--rule); background: var(--chip); color: var(--fg); }
-  button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
-  button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .actions button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .actions button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
   .status { font-size: .9em; color: var(--muted); flex-basis: 100%; }
   .status.ok { color: var(--ok); } .status.err { color: var(--err); }
   .callout { border-left: 3px solid var(--accent); background: var(--chip); padding: 12px 16px;
-             margin: 2em 0 0; border-radius: 0 6px 6px 0; font-size: .92em; color: var(--muted); }
-  .foot { color: var(--muted); font-size: .9em; margin-top: 2.4em; }
+             margin: 2em 0 0; border-radius: 0 6px 6px 0; font-size: .94em; max-width: 640px; }
+  .version { color: var(--muted); font-size: .92em; margin-top: 2.4em; }
+  /* ---- language: one language at a time, chosen from the device ---- */
+  .js section.lang { display: none; }
+  html[data-lang="en"] section.lang[lang="en"], html[data-lang="th"] section.lang[lang="th"],
+  html[data-lang="ja"] section.lang[lang="ja"], html[data-lang="ko"] section.lang[lang="ko"] { display: block; }
+  html:not(.js) section.lang + section.lang { margin-top: 3.4em; padding-top: 2em; border-top: 1px solid var(--rule); }
+  .bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+         gap: 10px 18px; margin: 0 0 1.8em; padding-bottom: 14px; border-bottom: 1px solid var(--rule); }
+  .lang-menu { position: relative; }
+  html:not(.js) .lang-menu { display: none; }
+  .lang-btn { font: inherit; font-size: .92em; display: inline-flex; align-items: center; gap: 7px;
+              height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--rule);
+              background: var(--chip); color: var(--fg); cursor: pointer; }
+  .lang-btn svg { width: 16px; height: 16px; flex: none; }
+  .lang-btn .caret { font-size: .7em; color: var(--muted); }
+  .lang-btn:focus-visible, .lang-list button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .lang-list { position: absolute; top: calc(100% + 6px); left: 0; z-index: 10; list-style: none;
+               margin: 0; padding: 6px; min-width: 170px; background: var(--bg);
+               border: 1px solid var(--rule); border-radius: 10px; box-shadow: 0 10px 28px rgba(0,0,0,.14); }
+  .lang-list li { margin: 0; }
+  .lang-list button { font: inherit; width: 100%; display: flex; justify-content: space-between; gap: 12px;
+                      text-align: left; padding: 8px 10px; border: 0; border-radius: 6px;
+                      background: none; color: var(--fg); cursor: pointer; }
+  .lang-list button:hover { background: var(--chip); }
+  .lang-list button[aria-checked="true"] { color: var(--accent); font-weight: 600; }
+  .lang-list button[aria-checked="true"]::after { content: "✓"; }
+  .site { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: .92em; }
+  .site a { text-decoration: none; }
+  .site a:hover { text-decoration: underline; }
+  .site a[aria-current="page"] { color: var(--fg); font-weight: 600; }
 </style>
-</head>
-<body>
+<script>
+/* Pick the page language before anything paints: a ?lang= link, then a saved
+   choice, then an old #th-style anchor, then the device's language list. */
+(function () {
+  var L = ['en', 'th', 'ja', 'ko'], l = null, d = document.documentElement;
+  try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
+  if (L.indexOf(l) < 0) { try { l = localStorage.getItem('tb-lang'); } catch (e) { l = null; } }
+  if (L.indexOf(l) < 0) l = location.hash.slice(1);
+  if (L.indexOf(l) < 0) {
+    l = 'en';
+    var n = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
+    for (var i = 0; i < n.length; i++) { var p = String(n[i]).toLowerCase().slice(0, 2); if (L.indexOf(p) >= 0) { l = p; break; } }
+  }
+  d.lang = l; d.setAttribute('data-lang', l); d.className += ' js';
+})();
+</script>
+<header class="bar" data-page="feedback">
+  <div class="lang-menu">
+    <button type="button" class="lang-btn" id="lang-btn" aria-haspopup="menu" aria-expanded="false" aria-controls="lang-list">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></svg>
+      <span id="lang-cur">English</span><span class="caret" aria-hidden="true">▼</span>
+    </button>
+    <ul class="lang-list" id="lang-list" role="menu" hidden>
+      <li><button type="button" role="menuitemradio" data-set="en">English</button></li>
+      <li><button type="button" role="menuitemradio" data-set="th">ไทย</button></li>
+      <li><button type="button" role="menuitemradio" data-set="ja">日本語</button></li>
+      <li><button type="button" role="menuitemradio" data-set="ko">한국어</button></li>
+    </ul>
+  </div>
+  <div class="site">
+    <a href="./" data-href="./" data-ui="privacy">Privacy Policy</a>
+    <a href="delete-data.html" data-href="delete-data.html" data-ui="delete">Delete your data</a>
+    <a href="feedback.html" data-href="feedback.html" data-ui="feedback">Send feedback</a>
+  </div>
+</header>
 
-<h1>Time<b>Board</b> · Feedback</h1>
-<p class="sub">บอกเราหน่อยว่าแอปเป็นยังไงบ้าง · Tell us how the app is working for you</p>
+<main>
+<h1 data-i="title">TimeBoard – Send Feedback</h1>
+<p class="updated" data-i="sub">Tell us how the app is working for you.</p>
 
 <form id="f" novalidate>
   <fieldset>
-    <legend>ประเภท · Type</legend>
+    <legend data-i="type">Type</legend>
     <div class="types">
-      <input type="radio" name="type" id="t-bug" value="Bug"><label for="t-bug" style="--c:var(--rose)"><i></i>บั๊ก · Bug</label>
-      <input type="radio" name="type" id="t-idea" value="Feature request" checked><label for="t-idea" style="--c:var(--sand)"><i></i>อยากได้ฟีเจอร์ · Feature</label>
-      <input type="radio" name="type" id="t-ux" value="Hard to use"><label for="t-ux" style="--c:var(--sky)"><i></i>ใช้งานยาก · Usability</label>
-      <input type="radio" name="type" id="t-praise" value="Praise"><label for="t-praise" style="--c:var(--mint)"><i></i>ชอบมาก · Praise</label>
-      <input type="radio" name="type" id="t-other" value="Other"><label for="t-other" style="--c:var(--stone)"><i></i>อื่น ๆ · Other</label>
+      <input type="radio" name="type" id="t-bug" value="Bug"><label for="t-bug" style="--c:var(--rose)"><i></i><span data-i="bug">Bug</span></label>
+      <input type="radio" name="type" id="t-idea" value="Feature request" checked><label for="t-idea" style="--c:var(--sand)"><i></i><span data-i="idea">Feature request</span></label>
+      <input type="radio" name="type" id="t-ux" value="Hard to use"><label for="t-ux" style="--c:var(--sky)"><i></i><span data-i="ux">Hard to use</span></label>
+      <input type="radio" name="type" id="t-praise" value="Praise"><label for="t-praise" style="--c:var(--mint)"><i></i><span data-i="praise">Praise</span></label>
+      <input type="radio" name="type" id="t-other" value="Other"><label for="t-other" style="--c:var(--stone)"><i></i><span data-i="other">Other</span></label>
     </div>
   </fieldset>
 
   <fieldset>
-    <legend>คะแนนโดยรวม · Rating</legend>
+    <legend data-i="rating">Overall rating</legend>
     <div class="stars" id="stars">
       <input type="radio" name="rating" id="r1" value="1"><label for="r1">★</label>
       <input type="radio" name="rating" id="r2" value="2"><label for="r2">★</label>
       <input type="radio" name="rating" id="r3" value="3"><label for="r3">★</label>
       <input type="radio" name="rating" id="r4" value="4"><label for="r4">★</label>
       <input type="radio" name="rating" id="r5" value="5"><label for="r5">★</label>
-      <span class="hint" id="hint">ไม่บังคับ · optional</span>
+      <span class="hint" id="hint" data-i="optional">Optional</span>
     </div>
   </fieldset>
 
   <div class="row">
     <fieldset>
-      <label class="l" for="screen">หน้าจอ · Screen</label>
+      <label class="l" for="screen" data-i="screen">Screen</label>
       <select id="screen">
-        <option value="">ไม่ระบุ · Not specified</option>
+        <option value="" data-i="notSpecified">Not specified</option>
         <option>Board</option><option>Calendar</option><option>Timeline</option>
         <option>Every Day</option><option>Life Dots</option><option>More / Settings</option>
         <option>Add / Edit Event</option><option>Notifications</option><option>Widget</option>
       </select>
     </fieldset>
     <fieldset>
-      <label class="l" for="device">เครื่อง · Device</label>
-      <input type="text" id="device" placeholder="e.g. Pixel 8 · Android 15">
+      <label class="l" for="device" data-i="device">Device</label>
+      <input type="text" id="device" data-ph="devicePh" placeholder="e.g. Pixel 8, Android 15">
     </fieldset>
   </div>
 
   <fieldset>
-    <label class="l" for="message">รายละเอียด · Details</label>
-    <textarea id="message" maxlength="2000" placeholder="เกิดอะไรขึ้น ทำอย่างไรถึงเจอ หรืออยากให้เพิ่มอะไร · What happened, how to reproduce, or what you'd like added"></textarea>
+    <label class="l" for="message" data-i="details">Details</label>
+    <textarea id="message" maxlength="2000" data-ph="detailsPh" placeholder="What happened, how to make it happen again, or what you would like added."></textarea>
     <div class="count" id="count">0 / 2000</div>
   </fieldset>
 
   <fieldset>
-    <label class="l" for="name">ชื่อ · Name (ไม่บังคับ · optional)</label>
+    <label class="l" for="name" data-i="name">Name (optional)</label>
     <input type="text" id="name" maxlength="60">
   </fieldset>
 
   <div class="actions">
-    <button type="submit" class="primary" id="send">ส่งทางอีเมล · Send by email</button>
-    <button type="button" id="copy">คัดลอกข้อความ · Copy text</button>
-    <span class="status" id="status"></span>
+    <button type="submit" class="primary" id="send" data-i="send">Send by email</button>
+    <button type="button" id="copy" data-i="copy">Copy text</button>
+    <span class="status" id="status" role="status"></span>
   </div>
 </form>
 
-<div class="callout">
-  ปุ่ม “ส่งทางอีเมล” จะเปิดแอปอีเมลของคุณพร้อมข้อความที่กรอกไว้ ส่งถึง <a href="mailto:overdrivelabs998@gmail.com">overdrivelabs998@gmail.com</a>
-  หน้านี้ไม่เก็บหรือส่งข้อมูลใด ๆ เอง<br>
-  “Send by email” opens your mail app with the text filled in, addressed to overdrivelabs998@gmail.com. This page stores and transmits nothing on its own.
-</div>
+<div class="callout" data-i-html="note">Send by email opens your mail app with the text filled in, addressed to <a href="mailto:overdrivelabs998@gmail.com">overdrivelabs998@gmail.com</a>. This page stores and sends nothing by itself.</div>
 
-<p class="foot"><a href="index.html">Privacy Policy</a> · <a href="delete-data.html">Delete your data</a> · App version 0.3.0</p>
-
+<p class="version" data-i="version">Feedback for TimeBoard version 0.3.0.</p>
+</main>
 <script>
 (function () {
-  const $ = id => document.getElementById(id);
-  const form = $('f'), status = $('status');
-  const stars = [...$('stars').querySelectorAll('label')];
-  const paint = n => { stars.forEach((l, i) => l.classList.toggle('on', i < n)); $('hint').textContent = n ? n + ' / 5' : 'ไม่บังคับ · optional'; };
-  $('stars').addEventListener('change', e => paint(+e.target.value));
-  $('message').addEventListener('input', e => { $('count').textContent = e.target.value.length + ' / 2000'; });
+  var MAIL = 'overdrivelabs998@gmail.com';
+  var mailLink = '<a href="mailto:' + MAIL + '">' + MAIL + '</a>';
+  var T = {
+    en: {
+      title: 'TimeBoard – Send Feedback', sub: 'Tell us how the app is working for you.',
+      type: 'Type', bug: 'Bug', idea: 'Feature request', ux: 'Hard to use', praise: 'Praise', other: 'Other',
+      rating: 'Overall rating', optional: 'Optional', screen: 'Screen', notSpecified: 'Not specified',
+      device: 'Device', devicePh: 'e.g. Pixel 8, Android 15', details: 'Details',
+      detailsPh: 'What happened, how to make it happen again, or what you would like added.',
+      name: 'Name (optional)', send: 'Send by email', copy: 'Copy text',
+      note: 'Send by email opens your mail app with the text filled in, addressed to ' + mailLink + '. This page stores and sends nothing by itself.',
+      version: 'Feedback for TimeBoard version 0.3.0.',
+      empty: 'Write a few details before sending.',
+      opened: 'Your mail app should open now. Press Send there. If it did not open, use Copy text and paste it into an email to ' + MAIL + '.',
+      copied: 'Copied. Paste it into an email to ' + MAIL + '.',
+      copyFail: 'Could not copy automatically. Select the text and copy it yourself.'
+    },
+    th: {
+      title: 'TimeBoard – ส่งความคิดเห็น', sub: 'บอกเราหน่อยว่าแอปเป็นอย่างไรบ้าง',
+      type: 'ประเภท', bug: 'แจ้งบั๊ก', idea: 'อยากได้ฟีเจอร์', ux: 'ใช้งานยาก', praise: 'ชอบมาก', other: 'อื่น ๆ',
+      rating: 'คะแนนโดยรวม', optional: 'ไม่บังคับ', screen: 'หน้าจอ', notSpecified: 'ไม่ระบุ',
+      device: 'เครื่องที่ใช้', devicePh: 'เช่น Pixel 8, Android 15', details: 'รายละเอียด',
+      detailsPh: 'เกิดอะไรขึ้น ทำอย่างไรถึงเจอ หรืออยากให้เพิ่มอะไร',
+      name: 'ชื่อ (ไม่บังคับ)', send: 'ส่งทางอีเมล', copy: 'คัดลอกข้อความ',
+      note: 'ปุ่ม “ส่งทางอีเมล” จะเปิดแอปอีเมลพร้อมข้อความที่กรอกไว้ ส่งถึง ' + mailLink + ' หน้านี้ไม่เก็บและไม่ส่งข้อมูลใด ๆ เอง',
+      version: 'ความคิดเห็นสำหรับ TimeBoard เวอร์ชัน 0.3.0',
+      empty: 'กรุณาพิมพ์รายละเอียดก่อนส่ง',
+      opened: 'แอปอีเมลควรเปิดขึ้นแล้ว กดส่งในแอปอีเมลอีกครั้ง ถ้าไม่เปิด ให้กดคัดลอกข้อความแล้ววางส่งไปที่ ' + MAIL,
+      copied: 'คัดลอกแล้ว วางในอีเมลแล้วส่งไปที่ ' + MAIL,
+      copyFail: 'คัดลอกอัตโนมัติไม่ได้ กรุณาเลือกข้อความแล้วคัดลอกเอง'
+    },
+    ja: {
+      title: 'TimeBoard – フィードバックを送る', sub: 'アプリの使い心地をお聞かせください。',
+      type: '種類', bug: '不具合', idea: '機能の要望', ux: '使いにくい', praise: '気に入っている', other: 'その他',
+      rating: '総合評価', optional: '任意', screen: '画面', notSpecified: '指定なし',
+      device: '端末', devicePh: '例: Pixel 8、Android 15', details: '詳細',
+      detailsPh: '何が起きたか、再現する手順、追加してほしい機能など。',
+      name: 'お名前（任意）', send: 'メールで送る', copy: 'テキストをコピー',
+      note: '「メールで送る」を押すと、入力内容が入った状態でメールアプリが開き、' + mailLink + ' 宛てになります。このページ自体は何も保存・送信しません。',
+      version: 'TimeBoard バージョン 0.3.0 へのフィードバック',
+      empty: '送信する前に詳細をご記入ください。',
+      opened: 'メールアプリが開きます。アプリ側で送信を押してください。開かない場合は「テキストをコピー」を押し、' + MAIL + ' 宛てのメールに貼り付けてください。',
+      copied: 'コピーしました。' + MAIL + ' 宛てのメールに貼り付けてください。',
+      copyFail: '自動でコピーできませんでした。テキストを選択してコピーしてください。'
+    },
+    ko: {
+      title: 'TimeBoard – 피드백 보내기', sub: '앱을 사용해 보신 느낌을 알려주세요.',
+      type: '유형', bug: '버그', idea: '기능 요청', ux: '사용하기 어려움', praise: '마음에 들어요', other: '기타',
+      rating: '전체 평점', optional: '선택 사항', screen: '화면', notSpecified: '지정 안 함',
+      device: '기기', devicePh: '예: Pixel 8, Android 15', details: '자세한 내용',
+      detailsPh: '무슨 일이 있었는지, 다시 발생시키는 방법, 추가되었으면 하는 기능 등.',
+      name: '이름 (선택 사항)', send: '이메일로 보내기', copy: '텍스트 복사',
+      note: '"이메일로 보내기"를 누르면 입력한 내용이 채워진 상태로 메일 앱이 열리며 받는 사람은 ' + mailLink + '입니다. 이 페이지는 아무것도 저장하거나 전송하지 않습니다.',
+      version: 'TimeBoard 버전 0.3.0에 대한 피드백',
+      empty: '보내기 전에 자세한 내용을 적어 주세요.',
+      opened: '메일 앱이 열립니다. 메일 앱에서 보내기를 눌러 주세요. 열리지 않으면 "텍스트 복사"를 누른 뒤 ' + MAIL + '로 보내는 메일에 붙여넣어 주세요.',
+      copied: '복사했습니다. ' + MAIL + '로 보내는 메일에 붙여넣어 주세요.',
+      copyFail: '자동으로 복사하지 못했습니다. 텍스트를 선택해 직접 복사해 주세요.'
+    }
+  };
+  var $ = function (id) { return document.getElementById(id); };
+  var form = $('f'), status = $('status'), lang = document.documentElement.getAttribute('data-lang') || 'en';
+  var t = function (k) { return (T[lang] || T.en)[k]; };
 
-  try { const d = JSON.parse(localStorage.getItem('tb-feedback-draft') || 'null');
-        if (d) { $('message').value = d.message || ''; $('name').value = d.name || ''; $('device').value = d.device || '';
-                 $('count').textContent = $('message').value.length + ' / 2000'; } } catch (e) {}
-  const save = () => { try { localStorage.setItem('tb-feedback-draft', JSON.stringify({ message: $('message').value, name: $('name').value, device: $('device').value })); } catch (e) {} };
-  ['message', 'name', 'device'].forEach(id => $(id).addEventListener('input', save));
+  function paint(n) {
+    [].forEach.call($('stars').querySelectorAll('label'), function (l, i) { l.classList.toggle('on', i < n); });
+    $('hint').textContent = n ? n + ' / 5' : t('optional');
+  }
+  function translate(l) {
+    lang = T[l] ? l : 'en';
+    [].forEach.call(document.querySelectorAll('[data-i]'), function (el) { el.textContent = t(el.getAttribute('data-i')); });
+    [].forEach.call(document.querySelectorAll('[data-i-html]'), function (el) { el.innerHTML = t(el.getAttribute('data-i-html')); });
+    [].forEach.call(document.querySelectorAll('[data-ph]'), function (el) { el.placeholder = t(el.getAttribute('data-ph')); });
+    paint(+(form.rating.value || 0));
+    status.textContent = ''; status.className = 'status';
+  }
+  document.addEventListener('langchange', function (e) { translate(e.detail); });
+
+  $('stars').addEventListener('change', function (e) { paint(+e.target.value); });
+  $('message').addEventListener('input', function (e) { $('count').textContent = e.target.value.length + ' / 2000'; });
+
+  try {
+    var d = JSON.parse(localStorage.getItem('tb-feedback-draft') || 'null');
+    if (d) {
+      $('message').value = d.message || ''; $('name').value = d.name || ''; $('device').value = d.device || '';
+      $('count').textContent = $('message').value.length + ' / 2000';
+    }
+  } catch (e) {}
+  var save = function () {
+    try { localStorage.setItem('tb-feedback-draft', JSON.stringify({ message: $('message').value, name: $('name').value, device: $('device').value })); } catch (e) {}
+  };
+  ['message', 'name', 'device'].forEach(function (id) { $(id).addEventListener('input', save); });
+
+  function say(kind, key) { status.className = 'status ' + kind; status.textContent = t(key); }
 
   function compose() {
-    const message = $('message').value.trim();
-    if (!message) { status.className = 'status err'; status.textContent = 'พิมพ์รายละเอียดสักหน่อยก่อนส่ง · Please write some details first'; $('message').focus(); return null; }
-    const type = form.type.value, rating = form.rating.value;
-    const lines = [
+    var message = $('message').value.trim();
+    if (!message) { say('err', 'empty'); $('message').focus(); return null; }
+    var type = form.type.value, rating = form.rating.value;
+    var body = [
       'Type: ' + type,
       'Rating: ' + (rating ? rating + '/5' : '-'),
       'Screen: ' + ($('screen').value || '-'),
       'Device: ' + ($('device').value.trim() || '-'),
       'App: TimeBoard 0.3.0 (com.overdrivelabs.timeboard)',
+      'Language: ' + lang,
       'Name: ' + ($('name').value.trim() || '-'),
-      '', message,
-    ];
-    return { subject: '[TimeBoard] ' + type + (rating ? ' ' + '★'.repeat(+rating) : ''), body: lines.join('\n') };
+      '', message
+    ].join('\n');
+    return { subject: '[TimeBoard] ' + type + (rating ? ' ' + new Array(+rating + 1).join('★') : ''), body: body };
   }
 
-  form.addEventListener('submit', e => {
+  form.addEventListener('submit', function (e) {
     e.preventDefault();
-    const m = compose(); if (!m) return;
-    location.href = 'mailto:overdrivelabs998@gmail.com?subject=' + encodeURIComponent(m.subject) + '&body=' + encodeURIComponent(m.body);
-    status.className = 'status ok';
-    status.textContent = 'เปิดแอปอีเมลแล้ว กดส่งในนั้นอีกครั้ง · Your mail app should open; press Send there. ถ้าไม่เปิด ใช้ปุ่มคัดลอกแล้ววางในอีเมลได้';
+    var m = compose(); if (!m) return;
+    location.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent(m.subject) + '&body=' + encodeURIComponent(m.body);
+    say('ok', 'opened');
     try { localStorage.removeItem('tb-feedback-draft'); } catch (e) {}
   });
 
-  $('copy').addEventListener('click', async () => {
-    const m = compose(); if (!m) return;
-    const text = m.subject + '\n\n' + m.body;
-    try { await navigator.clipboard.writeText(text); status.className = 'status ok'; status.textContent = 'คัดลอกแล้ว วางส่งไปที่ overdrivelabs998@gmail.com · Copied — paste it into an email'; }
-    catch (e) { status.className = 'status err'; status.textContent = 'คัดลอกอัตโนมัติไม่ได้ เลือกข้อความแล้วคัดลอกเอง · Could not copy automatically'; }
+  $('copy').addEventListener('click', function () {
+    var m = compose(); if (!m) return;
+    var text = m.subject + '\n\n' + m.body;
+    if (!navigator.clipboard) { say('err', 'copyFail'); return; }
+    navigator.clipboard.writeText(text).then(function () { say('ok', 'copied'); }, function () { say('err', 'copyFail'); });
   });
+
+  translate(lang);
 })();
 </script>
-</body>
-</html>
+<script>
+/* Language menu (top left). Shows one language; a choice is remembered and
+   carried to the other pages with ?lang=. Pages can listen for "langchange". */
+(function () {
+  var NAMES = { en: 'English', th: 'ไทย', ja: '日本語', ko: '한국어' };
+  var UI = {
+    en: { privacy: 'Privacy Policy', delete: 'Delete your data', feedback: 'Send feedback', menu: 'Language' },
+    th: { privacy: 'นโยบายความเป็นส่วนตัว', delete: 'ลบข้อมูลของคุณ', feedback: 'ส่งความคิดเห็น', menu: 'ภาษา' },
+    ja: { privacy: 'プライバシーポリシー', delete: 'データの削除', feedback: 'フィードバック', menu: '言語' },
+    ko: { privacy: '개인정보처리방침', delete: '데이터 삭제', feedback: '피드백 보내기', menu: '언어' }
+  };
+  var d = document.documentElement, bar = document.querySelector('.bar'), page = bar.getAttribute('data-page');
+  var btn = document.getElementById('lang-btn'), list = document.getElementById('lang-list');
+  var items = [].slice.call(list.querySelectorAll('button'));
+
+  function apply(l) {
+    d.lang = l; d.setAttribute('data-lang', l);
+    document.getElementById('lang-cur').textContent = NAMES[l];
+    btn.setAttribute('aria-label', UI[l].menu + ': ' + NAMES[l]);
+    items.forEach(function (b) { b.setAttribute('aria-checked', String(b.getAttribute('data-set') === l)); });
+    [].forEach.call(bar.querySelectorAll('.site a'), function (a) {
+      var key = a.getAttribute('data-ui');
+      a.textContent = UI[l][key];
+      a.href = a.getAttribute('data-href') + '?lang=' + l;
+      if (key === page) a.setAttribute('aria-current', 'page');
+    });
+    document.title = 'TimeBoard – ' + UI[l][page];
+    document.dispatchEvent(new CustomEvent('langchange', { detail: l }));
+  }
+  function close(focusBtn) { list.hidden = true; btn.setAttribute('aria-expanded', 'false'); if (focusBtn) btn.focus(); }
+  function open() {
+    list.hidden = false; btn.setAttribute('aria-expanded', 'true');
+    (items.filter(function (b) { return b.getAttribute('aria-checked') === 'true'; })[0] || items[0]).focus();
+  }
+  btn.addEventListener('click', function () { if (list.hidden) open(); else close(false); });
+  items.forEach(function (b, i) {
+    b.addEventListener('click', function () {
+      var l = b.getAttribute('data-set');
+      try { localStorage.setItem('tb-lang', l); } catch (e) {}
+      try { history.replaceState(null, '', location.pathname + '?lang=' + l); } catch (e) {}
+      apply(l); close(true); window.scrollTo(0, 0);
+    });
+    b.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown') { e.preventDefault(); items[(i + 1) % items.length].focus(); }
+      if (e.key === 'ArrowUp') { e.preventDefault(); items[(i + items.length - 1) % items.length].focus(); }
+    });
+  });
+  document.addEventListener('click', function (e) { if (!list.hidden && !e.target.closest('.lang-menu')) close(false); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !list.hidden) close(true); });
+  apply(d.getAttribute('data-lang') || 'en');
+})();
+</script>
