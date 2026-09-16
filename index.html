@@ -1,3 +1,4 @@
+<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TimeBoard – Privacy Policy</title>
@@ -67,13 +68,13 @@
   .site a[aria-current="page"] { color: var(--fg); font-weight: 600; }
 </style>
 <script>
-/* Pick the page language before anything paints: a ?lang= link, then a saved
-   choice, then an old #th-style anchor, then the device's language list. */
+/* Pick the page language before anything paints: a ?lang= link, then an old
+   #th-style anchor, then a saved choice, then the device's language list. */
 (function () {
   var L = ['en', 'th', 'ja', 'ko'], l = null, d = document.documentElement;
   try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
-  if (L.indexOf(l) < 0) { try { l = localStorage.getItem('tb-lang'); } catch (e) { l = null; } }
   if (L.indexOf(l) < 0) l = location.hash.slice(1);
+  if (L.indexOf(l) < 0) { try { l = localStorage.getItem('tb-lang'); } catch (e) { l = null; } }
   if (L.indexOf(l) < 0) {
     l = 'en';
     var n = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
@@ -89,10 +90,10 @@
       <span id="lang-cur">English</span><span class="caret" aria-hidden="true">▼</span>
     </button>
     <ul class="lang-list" id="lang-list" role="menu" hidden>
-      <li><button type="button" role="menuitemradio" data-set="en">English</button></li>
-      <li><button type="button" role="menuitemradio" data-set="th">ไทย</button></li>
-      <li><button type="button" role="menuitemradio" data-set="ja">日本語</button></li>
-      <li><button type="button" role="menuitemradio" data-set="ko">한국어</button></li>
+      <li role="none"><button type="button" role="menuitemradio" data-set="en">English</button></li>
+      <li role="none"><button type="button" role="menuitemradio" data-set="th">ไทย</button></li>
+      <li role="none"><button type="button" role="menuitemradio" data-set="ja">日本語</button></li>
+      <li role="none"><button type="button" role="menuitemradio" data-set="ko">한국어</button></li>
     </ul>
   </div>
   <div class="site">
@@ -477,6 +478,13 @@
       a.href = a.getAttribute('data-href') + '?lang=' + l;
       if (key === page) a.setAttribute('aria-current', 'page');
     });
+    // Links to the other pages inside the text keep the language too.
+    [].forEach.call(document.querySelectorAll('main a[href]'), function (a) {
+      var h = a.getAttribute('data-href') || a.getAttribute('href');
+      if (['./', 'index.html', 'delete-data.html', 'feedback.html'].indexOf(h) < 0) return;
+      a.setAttribute('data-href', h);
+      a.href = h + '?lang=' + l;
+    });
     document.title = 'TimeBoard – ' + UI[l][page];
     document.dispatchEvent(new CustomEvent('langchange', { detail: l }));
   }
@@ -486,6 +494,14 @@
     (items.filter(function (b) { return b.getAttribute('aria-checked') === 'true'; })[0] || items[0]).focus();
   }
   btn.addEventListener('click', function () { if (list.hidden) open(); else close(false); });
+  btn.addEventListener('keydown', function (e) {
+    if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && list.hidden) { e.preventDefault(); open(); }
+  });
+  // Tabbing out of the open menu closes it.
+  list.addEventListener('focusout', function (e) {
+    var to = e.relatedTarget;
+    if (!list.hidden && !(to && to.closest && to.closest('.lang-menu'))) close(false);
+  });
   items.forEach(function (b, i) {
     b.addEventListener('click', function () {
       var l = b.getAttribute('data-set');

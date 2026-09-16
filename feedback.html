@@ -1,3 +1,4 @@
+<!doctype html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>TimeBoard – Send feedback</title>
@@ -54,6 +55,8 @@
   .status.ok { color: var(--ok); } .status.err { color: var(--err); }
   .callout { border-left: 3px solid var(--accent); background: var(--chip); padding: 12px 16px;
              margin: 2em 0 0; border-radius: 0 6px 6px 0; font-size: .94em; max-width: 640px; }
+  .composed { width: 100%; max-width: 640px; min-height: 160px; margin-top: 4px; font: inherit; font-size: .9em;
+              color: var(--fg); background: var(--field); border: 1px solid var(--accent); border-radius: 10px; padding: 10px 12px; }
   .version { color: var(--muted); font-size: .92em; margin-top: 2.4em; }
   /* ---- language: one language at a time, chosen from the device ---- */
   .js section.lang { display: none; }
@@ -86,13 +89,13 @@
   .site a[aria-current="page"] { color: var(--fg); font-weight: 600; }
 </style>
 <script>
-/* Pick the page language before anything paints: a ?lang= link, then a saved
-   choice, then an old #th-style anchor, then the device's language list. */
+/* Pick the page language before anything paints: a ?lang= link, then an old
+   #th-style anchor, then a saved choice, then the device's language list. */
 (function () {
   var L = ['en', 'th', 'ja', 'ko'], l = null, d = document.documentElement;
   try { l = new URLSearchParams(location.search).get('lang'); } catch (e) {}
-  if (L.indexOf(l) < 0) { try { l = localStorage.getItem('tb-lang'); } catch (e) { l = null; } }
   if (L.indexOf(l) < 0) l = location.hash.slice(1);
+  if (L.indexOf(l) < 0) { try { l = localStorage.getItem('tb-lang'); } catch (e) { l = null; } }
   if (L.indexOf(l) < 0) {
     l = 'en';
     var n = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || 'en'];
@@ -108,10 +111,10 @@
       <span id="lang-cur">English</span><span class="caret" aria-hidden="true">▼</span>
     </button>
     <ul class="lang-list" id="lang-list" role="menu" hidden>
-      <li><button type="button" role="menuitemradio" data-set="en">English</button></li>
-      <li><button type="button" role="menuitemradio" data-set="th">ไทย</button></li>
-      <li><button type="button" role="menuitemradio" data-set="ja">日本語</button></li>
-      <li><button type="button" role="menuitemradio" data-set="ko">한국어</button></li>
+      <li role="none"><button type="button" role="menuitemradio" data-set="en">English</button></li>
+      <li role="none"><button type="button" role="menuitemradio" data-set="th">ไทย</button></li>
+      <li role="none"><button type="button" role="menuitemradio" data-set="ja">日本語</button></li>
+      <li role="none"><button type="button" role="menuitemradio" data-set="ko">한국어</button></li>
     </ul>
   </div>
   <div class="site">
@@ -140,11 +143,11 @@
   <fieldset>
     <legend data-i="rating">Overall rating</legend>
     <div class="stars" id="stars">
-      <input type="radio" name="rating" id="r1" value="1"><label for="r1">★</label>
-      <input type="radio" name="rating" id="r2" value="2"><label for="r2">★</label>
-      <input type="radio" name="rating" id="r3" value="3"><label for="r3">★</label>
-      <input type="radio" name="rating" id="r4" value="4"><label for="r4">★</label>
-      <input type="radio" name="rating" id="r5" value="5"><label for="r5">★</label>
+      <input type="radio" name="rating" id="r1" value="1" aria-label="1 / 5"><label for="r1">★</label>
+      <input type="radio" name="rating" id="r2" value="2" aria-label="2 / 5"><label for="r2">★</label>
+      <input type="radio" name="rating" id="r3" value="3" aria-label="3 / 5"><label for="r3">★</label>
+      <input type="radio" name="rating" id="r4" value="4" aria-label="4 / 5"><label for="r4">★</label>
+      <input type="radio" name="rating" id="r5" value="5" aria-label="5 / 5"><label for="r5">★</label>
       <span class="hint" id="hint" data-i="optional">Optional</span>
     </div>
   </fieldset>
@@ -181,6 +184,7 @@
     <button type="button" id="copy" data-i="copy">Copy text</button>
     <span class="status" id="status" role="status"></span>
   </div>
+  <textarea id="composed" class="composed" readonly hidden aria-label="Feedback text to copy"></textarea>
 </form>
 
 <div class="callout" data-i-html="note">Send by email opens your mail app with the text filled in, addressed to <a href="mailto:overdrivelabs998@gmail.com">overdrivelabs998@gmail.com</a>. This page stores and sends nothing by itself.</div>
@@ -204,7 +208,8 @@
       empty: 'Write a few details before sending.',
       opened: 'Your mail app should open now. Press Send there. If it did not open, use Copy text and paste it into an email to ' + MAIL + '.',
       copied: 'Copied. Paste it into an email to ' + MAIL + '.',
-      copyFail: 'Could not copy automatically. Select the text and copy it yourself.'
+      copyFail: 'Could not copy automatically. The text is in the box below: select it and copy.',
+      tooLong: 'This message is too long to open in a mail app. Copy the text in the box below and paste it into an email to ' + MAIL + '.'
     },
     th: {
       title: 'TimeBoard – ส่งความคิดเห็น', sub: 'บอกเราหน่อยว่าแอปเป็นอย่างไรบ้าง',
@@ -218,7 +223,8 @@
       empty: 'กรุณาพิมพ์รายละเอียดก่อนส่ง',
       opened: 'แอปอีเมลควรเปิดขึ้นแล้ว กดส่งในแอปอีเมลอีกครั้ง ถ้าไม่เปิด ให้กดคัดลอกข้อความแล้ววางส่งไปที่ ' + MAIL,
       copied: 'คัดลอกแล้ว วางในอีเมลแล้วส่งไปที่ ' + MAIL,
-      copyFail: 'คัดลอกอัตโนมัติไม่ได้ กรุณาเลือกข้อความแล้วคัดลอกเอง'
+      copyFail: 'คัดลอกอัตโนมัติไม่ได้ ข้อความอยู่ในกล่องด้านล่าง เลือกแล้วคัดลอกได้เลย',
+      tooLong: 'ข้อความยาวเกินกว่าจะเปิดในแอปอีเมล กรุณาคัดลอกข้อความในกล่องด้านล่าง แล้ววางส่งไปที่ ' + MAIL
     },
     ja: {
       title: 'TimeBoard – フィードバックを送る', sub: 'アプリの使い心地をお聞かせください。',
@@ -232,7 +238,8 @@
       empty: '送信する前に詳細をご記入ください。',
       opened: 'メールアプリが開きます。アプリ側で送信を押してください。開かない場合は「テキストをコピー」を押し、' + MAIL + ' 宛てのメールに貼り付けてください。',
       copied: 'コピーしました。' + MAIL + ' 宛てのメールに貼り付けてください。',
-      copyFail: '自動でコピーできませんでした。テキストを選択してコピーしてください。'
+      copyFail: '自動でコピーできませんでした。下の欄のテキストを選択してコピーしてください。',
+      tooLong: 'メッセージが長すぎてメールアプリで開けません。下の欄のテキストをコピーし、' + MAIL + ' 宛てのメールに貼り付けてください。'
     },
     ko: {
       title: 'TimeBoard – 피드백 보내기', sub: '앱을 사용해 보신 느낌을 알려주세요.',
@@ -246,7 +253,8 @@
       empty: '보내기 전에 자세한 내용을 적어 주세요.',
       opened: '메일 앱이 열립니다. 메일 앱에서 보내기를 눌러 주세요. 열리지 않으면 "텍스트 복사"를 누른 뒤 ' + MAIL + '로 보내는 메일에 붙여넣어 주세요.',
       copied: '복사했습니다. ' + MAIL + '로 보내는 메일에 붙여넣어 주세요.',
-      copyFail: '자동으로 복사하지 못했습니다. 텍스트를 선택해 직접 복사해 주세요.'
+      copyFail: '자동으로 복사하지 못했습니다. 아래 칸의 텍스트를 선택해 복사해 주세요.',
+      tooLong: '메시지가 너무 길어 메일 앱에서 열 수 없습니다. 아래 칸의 텍스트를 복사해 ' + MAIL + '로 보내는 메일에 붙여넣어 주세요.'
     }
   };
   var $ = function (id) { return document.getElementById(id); };
@@ -293,7 +301,7 @@
       'Rating: ' + (rating ? rating + '/5' : '-'),
       'Screen: ' + ($('screen').value || '-'),
       'Device: ' + ($('device').value.trim() || '-'),
-      'App: TimeBoard 0.3.0 (com.overdrivelabs.timeboard)',
+      'App: TimeBoard (com.overdrivelabs.timeboard)',
       'Language: ' + lang,
       'Name: ' + ($('name').value.trim() || '-'),
       '', message
@@ -301,19 +309,38 @@
     return { subject: '[TimeBoard] ' + type + (rating ? ' ' + new Array(+rating + 1).join('★') : ''), body: body };
   }
 
+  // Mail apps (Outlook, Windows) cut mailto links off at about 2000
+  // characters; past that the text is shown for copying instead.
+  var MAX_MAILTO = 1900;
+
+  /** Puts the full text in a read-only box under the buttons, selected, so
+   *  it can always be copied by hand. */
+  function reveal(m) {
+    var box = $('composed');
+    box.value = m.subject + '\n\n' + m.body;
+    box.hidden = false;
+    box.focus();
+    box.select();
+  }
+
   form.addEventListener('submit', function (e) {
     e.preventDefault();
     var m = compose(); if (!m) return;
-    location.href = 'mailto:' + MAIL + '?subject=' + encodeURIComponent(m.subject) + '&body=' + encodeURIComponent(m.body);
+    var url = 'mailto:' + MAIL + '?subject=' + encodeURIComponent(m.subject) +
+      '&body=' + encodeURIComponent(m.body.replace(/\n/g, '\r\n'));
+    if (url.length > MAX_MAILTO) { say('err', 'tooLong'); reveal(m); return; }
+    location.href = url;
+    // The page cannot tell whether a mail app opened, so the draft is kept
+    // until the person clears the form themselves.
     say('ok', 'opened');
-    try { localStorage.removeItem('tb-feedback-draft'); } catch (e) {}
   });
 
   $('copy').addEventListener('click', function () {
     var m = compose(); if (!m) return;
     var text = m.subject + '\n\n' + m.body;
-    if (!navigator.clipboard) { say('err', 'copyFail'); return; }
-    navigator.clipboard.writeText(text).then(function () { say('ok', 'copied'); }, function () { say('err', 'copyFail'); });
+    var fail = function () { say('err', 'copyFail'); reveal(m); };
+    if (!navigator.clipboard) { fail(); return; }
+    navigator.clipboard.writeText(text).then(function () { say('ok', 'copied'); }, fail);
   });
 
   translate(lang);
@@ -345,6 +372,13 @@
       a.href = a.getAttribute('data-href') + '?lang=' + l;
       if (key === page) a.setAttribute('aria-current', 'page');
     });
+    // Links to the other pages inside the text keep the language too.
+    [].forEach.call(document.querySelectorAll('main a[href]'), function (a) {
+      var h = a.getAttribute('data-href') || a.getAttribute('href');
+      if (['./', 'index.html', 'delete-data.html', 'feedback.html'].indexOf(h) < 0) return;
+      a.setAttribute('data-href', h);
+      a.href = h + '?lang=' + l;
+    });
     document.title = 'TimeBoard – ' + UI[l][page];
     document.dispatchEvent(new CustomEvent('langchange', { detail: l }));
   }
@@ -354,6 +388,14 @@
     (items.filter(function (b) { return b.getAttribute('aria-checked') === 'true'; })[0] || items[0]).focus();
   }
   btn.addEventListener('click', function () { if (list.hidden) open(); else close(false); });
+  btn.addEventListener('keydown', function (e) {
+    if ((e.key === 'ArrowDown' || e.key === 'ArrowUp') && list.hidden) { e.preventDefault(); open(); }
+  });
+  // Tabbing out of the open menu closes it.
+  list.addEventListener('focusout', function (e) {
+    var to = e.relatedTarget;
+    if (!list.hidden && !(to && to.closest && to.closest('.lang-menu'))) close(false);
+  });
   items.forEach(function (b, i) {
     b.addEventListener('click', function () {
       var l = b.getAttribute('data-set');
