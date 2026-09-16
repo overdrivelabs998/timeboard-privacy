@@ -1,0 +1,391 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TimeBoard – Privacy Policy</title>
+<style>
+  :root { --fg:#1F1D1A; --bg:#FFFFFF; --muted:#6B6259; --rule:#E2D9CD;
+          --accent:#A8583C; --chip:rgba(127,127,127,.13); }
+  @media (prefers-color-scheme: dark) {
+    :root { --fg:#F1EDE6; --bg:#161514; --muted:#A79C8E; --rule:#3A352F;
+            --accent:#E8926A; --chip:rgba(255,255,255,.09); }
+  }
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+         "Noto Sans Thai", "Noto Sans JP", "Noto Sans KR", sans-serif;
+         max-width: 780px; margin: 0 auto; padding: 24px 20px 72px;
+         line-height: 1.68; color: var(--fg); background: var(--bg); }
+  h1 { font-size: 1.55em; line-height: 1.3; margin-bottom: .2em; }
+  h2 { font-size: 1.14em; margin-top: 1.9em; margin-bottom: .5em; }
+  .lang-head { font-size: 1.36em; padding-bottom: .25em;
+               border-bottom: 2px solid var(--accent); }
+  p, li { overflow-wrap: break-word; }
+  ul { padding-left: 1.3em; }
+  li { margin-bottom: .5em; }
+  code { background: var(--chip); padding: 1px 5px; border-radius: 4px;
+         font-size: .9em; word-break: break-all; }
+  a { color: var(--accent); }
+  hr { margin: 3.4em 0; border: none; border-top: 1px solid var(--rule); }
+  .updated { color: var(--muted); font-size: .92em; margin-top: 0; }
+  .callout { border-left: 3px solid var(--accent); background: var(--chip);
+             padding: 12px 16px; margin: 1.5em 0; border-radius: 0 6px 6px 0; }
+  .future { border: 1px solid var(--rule); background: var(--chip);
+            padding: 4px 16px 14px; margin: 2em 0 0; border-radius: 8px; }
+  .future h2 { margin-top: 1.2em; }
+  .version { color: var(--muted); font-size: .92em; margin-top: 2.4em; }
+  nav { background: var(--chip); border-radius: 8px; padding: 12px 16px;
+        margin: 1.5em 0 2.5em; font-size: .95em; }
+  nav ul { list-style: none; padding: 0; margin: .4em 0 0;
+           display: flex; flex-wrap: wrap; gap: .5em 1.4em; }
+  nav li { margin: 0; }
+</style>
+
+<h1>TimeBoard – Privacy Policy</h1>
+<p class="updated"><em>Last updated: 16 September 2026</em></p>
+
+<nav>
+  <strong>Languages · ภาษา · 言語 · 언어</strong>
+  <ul>
+    <li><a href="#en">English</a></li>
+    <li><a href="#th">ภาษาไทย</a></li>
+    <li><a href="#ja">日本語</a></li>
+    <li><a href="#ko">한국어</a></li>
+  </ul>
+  <p style="margin:.7em 0 0"><a href="delete-data.html">How to delete your data · วิธีลบข้อมูลของคุณ · データの削除方法 · 데이터 삭제 방법</a></p>
+</nav>
+
+<!-- ==================== ENGLISH ==================== -->
+<h2 id="en" class="lang-head">English</h2>
+
+<p>TimeBoard ("the app") is a countdown board for the dates you care about. This policy explains what the app stores, why it asks for the permissions it asks for, and what control you have. <strong>The app has no user accounts and no server of ours.</strong></p>
+
+<div class="callout">
+  <strong>Nothing you type can leave your phone.</strong> The version of TimeBoard on Google Play does not request the internet permission at all, so the app cannot send anything anywhere — not to us, not to anyone else. Your events, profiles and settings are written to the app's private storage on your device and stay there.
+</div>
+
+<h2>Who we are</h2>
+<p>TimeBoard is published by Overdrive Labs. Under the GDPR we would be the data controller, but in practice we never receive your data: it is created and stored solely on your device. You can reach us at <a href="mailto:overdrivelabs998@gmail.com">overdrivelabs998@gmail.com</a>.</p>
+
+<h2>What the app stores on your device</h2>
+<ul>
+  <li><strong>Your events.</strong> For each event: the title, the date and time, the time zone you picked (or none, if the event follows your phone's zone), the category, the icon and colour, the repeat setting, the reminder setting, the optional location (free text), the optional note (free text), whether you marked it Important, which cover image you chose, and when the event was first saved.</li>
+  <li><strong>Your profiles.</strong> Each profile is a separate board with its own events and its own name, which you type. The app also remembers which profile is active.</li>
+  <li><strong>Your settings.</strong> Theme, whether the week starts on Monday, whether past events are hidden, notifications on or off, your default reminder, how times are displayed, and — only if you set up the Life tab — your birth date and the number of years the Life board draws.</li>
+  <li><strong>Small housekeeping values.</strong> The last device time zone the app saw, and a record of which reminders are currently scheduled so it does not re-post them needlessly.</li>
+  <li><strong>A safety copy of unreadable data.</strong> If the stored event list is ever damaged, the app keeps the raw text in a separate local key instead of deleting it, so nothing is silently lost. It stays on your device like everything else.</li>
+</ul>
+<p>All of it is stored in the app's private preferences storage, inside the app's own sandbox on your device. There is no cloud copy, and there is nothing on our side to look at.</p>
+
+<h2>Location, photos, contacts</h2>
+<p>The "location" on an event is just a line of text you type, such as "Terminal 2". The app does not read your device's location, and never asks for that permission. Cover images are pictures built into the app that you pick from a list — the app does not access your photo library, camera, contacts, files, microphone or calendar.</p>
+
+<h2>Time zones</h2>
+<p>To count down correctly, the app reads your device's current time zone name (for example <code>Asia/Bangkok</code>) from the operating system. That name stays on the device. The time zone database the app uses is bundled inside the app, so no lookup is ever made over the network.</p>
+
+<h2>Notifications</h2>
+<p>A reminder is built on your device and shown by Android. It contains the event's title and a short line about the timing, such as "Starts now", "In 1 hour · 09:00" or "Tomorrow · 09:00". Nothing is sent through a push service, because there is none: every reminder is scheduled locally by the app itself.</p>
+
+<h2>What we do not collect</h2>
+<ul>
+  <li>No accounts, no sign-in, no email address, no user profile — there is nothing to register.</li>
+  <li>No server or database operated by us.</li>
+  <li>No analytics, no crash reporting, no advertising SDK, and no in-app purchases in this version.</li>
+  <li>No device identifiers, no advertising ID, no IP address — the app has no internet permission, so it cannot report any of this.</li>
+  <li>We do not sell or share your personal data, because we never have it.</li>
+</ul>
+
+<h2>Permissions and why each is needed</h2>
+<ul>
+  <li><strong>Notifications</strong> (<code>POST_NOTIFICATIONS</code>) — so your reminders can actually appear. Android asks you for this the first time; if you say no, the app still works, you just get no reminders.</li>
+  <li><strong>Exact alarms</strong> (<code>SCHEDULE_EXACT_ALARM</code>) — so the "At time" and "1 hour before" reminders arrive on the minute rather than whenever the system next feels like waking up. You grant this yourself in Android settings and can revoke it at any time; without it the app falls back to inexact reminders, which may arrive late.</li>
+  <li><strong>Run at startup</strong> (<code>RECEIVE_BOOT_COMPLETED</code>) — so your scheduled reminders are restored after you restart the phone, instead of quietly disappearing.</li>
+</ul>
+<p>That is the complete list. In particular, the app does <strong>not</strong> declare the internet permission.</p>
+
+<h2>Developer builds</h2>
+<p>Test builds used during development add the internet permission, because Flutter's development tools need it to talk to the running app. Those builds are never published: the app on Google Play is the release build, and it has no internet permission.</p>
+
+<h2>Google Play</h2>
+<p>TimeBoard is distributed through Google Play. Google, as the store, collects its own data about installs, updates and crashes under <a href="https://policies.google.com/privacy">Google's privacy policy</a>, and would handle any future purchase through Google Play's billing. That is Google's collection, under Google's terms — not ours. We receive nothing from it beyond the anonymous, aggregated statistics any developer sees in the Play Console.</p>
+
+<h2>Backup</h2>
+<p>TimeBoard has no backup or sync of its own in this version, and no way to export your board. If you have Android's system backup switched on for your device, Android may include app data in your Google account backup under Google's terms; that is a feature of the operating system, and we neither see nor control it.</p>
+
+<h2>Data retention and deletion</h2>
+<p>Your data stays for as long as you keep it. Delete an event in the app and it is gone; delete a profile and its events go with it, including that profile's safety copy of unreadable data. Uninstalling TimeBoard removes everything the app stored on your device. Because we hold no copy, there is no account on our side to close and nothing for us to delete.</p>
+
+<h2>Children</h2>
+<p>TimeBoard is not directed at children under 13 (or the equivalent minimum age where you live). It collects nothing from anyone, whatever their age.</p>
+
+<h2>Your rights</h2>
+<p>Under the GDPR, Thailand's PDPA, Japan's APPI, Korea's PIPA, the CCPA and similar laws you have rights of access, rectification, erasure, restriction, portability and objection. Because your data never reaches us, you exercise these rights directly in the app: everything you entered is visible on the board, editable in the event editor, and deletable one event, one profile, or one uninstall at a time. We hold no personal data to export, correct or erase on your behalf. You are still welcome to contact us with any question or complaint.</p>
+
+<h2>Security</h2>
+<p>Your data sits in the app's private storage, which Android isolates from other apps. Since nothing is transmitted, there is no server or connection carrying it that could be breached. Someone with physical access to an unlocked phone could read your events, so we recommend keeping a screen lock enabled.</p>
+
+<h2>Changes to this policy</h2>
+<p>We may update this policy from time to time. Material changes will appear here with a new "Last updated" date, and always before the app version they describe is released.</p>
+
+<h2>Contact</h2>
+<p>Questions, complaints or data requests: <a href="mailto:overdrivelabs998@gmail.com">overdrivelabs998@gmail.com</a>. If you are in the EU or UK and are unhappy with our response, you may lodge a complaint with your local data protection authority.</p>
+
+<div class="future">
+<h2>Planned changes — ads and a Pro purchase</h2>
+<p>A future version of TimeBoard is planned to show Google AdMob ads — on the event detail screen, plus an occasional full-screen ad when switching tabs — and to offer a one-time Pro purchase through Google Play that removes them. <strong>The current version, 0.3.0, shows no ads and sells nothing</strong>, and the paragraph above about the missing internet permission is true of it today.</p>
+<p>That version will need internet access, and Google will be involved as a separate provider for both the ads and the billing, collecting data under <a href="https://policies.google.com/privacy">Google's own privacy policy</a>. Where the law requires it, you will be asked for consent to personalised advertising before any ad is shown. We will update this policy with the details and publish it <em>before</em> that version ships, so the policy linked from Google Play always matches what the app on Google Play actually does.</p>
+</div>
+
+<p class="version">This policy describes TimeBoard version 0.3.0.</p>
+
+<hr>
+
+<!-- ==================== ไทย ==================== -->
+<h2 id="th" class="lang-head">ภาษาไทย</h2>
+
+<p>TimeBoard ("แอป") เป็นกระดานนับถอยหลังสำหรับวันสำคัญของคุณ นโยบายนี้อธิบายว่าแอปเก็บอะไรบ้าง ขอสิทธิ์แต่ละอย่างไปทำไม และคุณควบคุมอะไรได้บ้าง <strong>แอปไม่มีระบบบัญชีผู้ใช้ และเราไม่มีเซิร์ฟเวอร์ใด ๆ</strong></p>
+
+<div class="callout">
+  <strong>สิ่งที่คุณพิมพ์ออกจากเครื่องไม่ได้เลย</strong> TimeBoard เวอร์ชันที่อยู่บน Google Play ไม่ได้ขอสิทธิ์อินเทอร์เน็ตเลยแม้แต่น้อย แอปจึงส่งข้อมูลไปที่ไหนไม่ได้ ไม่ว่าจะมาที่เราหรือไปที่ใคร กิจกรรม โปรไฟล์ และการตั้งค่าของคุณถูกเขียนไว้ในพื้นที่เก็บข้อมูลส่วนตัวของแอปบนเครื่องคุณ และอยู่ตรงนั้นเท่านั้น
+</div>
+
+<h2>เราคือใคร</h2>
+<p>TimeBoard เผยแพร่โดย Overdrive Labs ตาม GDPR เราถือเป็นผู้ควบคุมข้อมูล แต่ในทางปฏิบัติเราไม่เคยได้รับข้อมูลของคุณเลย เพราะข้อมูลถูกสร้างและเก็บอยู่บนเครื่องของคุณเท่านั้น ติดต่อเราได้ที่ <a href="mailto:overdrivelabs998@gmail.com">overdrivelabs998@gmail.com</a></p>
+
+<h2>แอปเก็บอะไรไว้บนเครื่องของคุณ</h2>
+<ul>
+  <li><strong>กิจกรรมของคุณ</strong> แต่ละกิจกรรมประกอบด้วย ชื่อเรื่อง วันและเวลา โซนเวลาที่คุณเลือก (หรือไม่เลือก ซึ่งกิจกรรมจะยึดตามโซนเวลาของเครื่อง) หมวดหมู่ ไอคอนและสี การตั้งค่าทำซ้ำ การตั้งค่าแจ้งเตือน สถานที่ (พิมพ์เองอิสระ ไม่บังคับ) โน้ต (พิมพ์เองอิสระ ไม่บังคับ) การทำเครื่องหมายว่าสำคัญ ภาพหน้าปกที่คุณเลือก และเวลาที่บันทึกกิจกรรมนั้นครั้งแรก</li>
+  <li><strong>โปรไฟล์ของคุณ</strong> แต่ละโปรไฟล์คือกระดานแยกกัน มีกิจกรรมของตัวเองและมีชื่อที่คุณตั้งเอง แอปยังจำด้วยว่าตอนนี้ใช้โปรไฟล์ไหนอยู่</li>
+  <li><strong>การตั้งค่าของคุณ</strong> ธีม สัปดาห์เริ่มวันจันทร์หรือไม่ ซ่อนกิจกรรมที่ผ่านไปแล้วหรือไม่ เปิดหรือปิดการแจ้งเตือน การแจ้งเตือนเริ่มต้น รูปแบบการแสดงเวลา และเฉพาะกรณีที่คุณตั้งค่าแท็บ Life ไว้เท่านั้น จะมีวันเกิดของคุณและจำนวนปีที่กระดาน Life วาด</li>
+  <li><strong>ค่าเล็ก ๆ สำหรับการทำงานภายใน</strong> โซนเวลาของเครื่องที่แอปเห็นล่าสุด และบันทึกว่ามีการแจ้งเตือนใดตั้งค้างไว้อยู่ เพื่อไม่ให้ตั้งซ้ำโดยไม่จำเป็น</li>
+  <li><strong>สำเนาสำรองของข้อมูลที่อ่านไม่ออก</strong> หากรายการกิจกรรมที่เก็บไว้เสียหาย แอปจะเก็บข้อความดิบไว้ในคีย์แยกต่างหากบนเครื่องแทนการลบทิ้ง เพื่อไม่ให้ข้อมูลหายไปเงียบ ๆ ไฟล์นี้อยู่บนเครื่องคุณเช่นเดียวกับข้อมูลอื่นทั้งหมด</li>
+</ul>
+<p>ทั้งหมดนี้เก็บอยู่ในพื้นที่ค่าตั้งส่วนตัวของแอป ภายในแซนด์บ็อกซ์ของแอปบนเครื่องคุณ ไม่มีสำเนาบนคลาวด์ และไม่มีอะไรฝั่งเราให้ดูเลย</p>
+
+<h2>ตำแหน่ง รูปภาพ รายชื่อผู้ติดต่อ</h2>
+<p>ช่อง "สถานที่" ในกิจกรรมเป็นเพียงข้อความที่คุณพิมพ์เอง เช่น "อาคารผู้โดยสาร 2" แอปไม่ได้อ่านตำแหน่งจริงของเครื่อง และไม่เคยขอสิทธิ์นั้น ส่วนภาพหน้าปกเป็นรูปที่ติดมากับตัวแอปให้คุณเลือกจากรายการ แอปไม่เข้าถึงคลังรูปภาพ กล้อง รายชื่อผู้ติดต่อ ไฟล์ ไมโครโฟน หรือปฏิทินของคุณ</p>
+
+<h2>โซนเวลา</h2>
+<p>เพื่อให้นับถอยหลังได้ถูกต้อง แอปอ่านชื่อโซนเวลาปัจจุบันของเครื่องจากระบบปฏิบัติการ (เช่น <code>Asia/Bangkok</code>) ชื่อนี้อยู่บนเครื่องเท่านั้น และฐานข้อมูลโซนเวลาที่แอปใช้ก็ติดมากับตัวแอปอยู่แล้ว จึงไม่มีการค้นหาผ่านเครือข่ายเลย</p>
+
+<h2>การแจ้งเตือน</h2>
+<p>การแจ้งเตือนถูกสร้างขึ้นบนเครื่องของคุณและแสดงโดย Android เนื้อหาประกอบด้วยชื่อกิจกรรมและข้อความสั้น ๆ เกี่ยวกับเวลา เช่น "Starts now", "In 1 hour · 09:00" หรือ "Tomorrow · 09:00" ไม่มีการส่งผ่านบริการ push ใด ๆ เพราะไม่มีบริการนั้นอยู่เลย การแจ้งเตือนทุกรายการถูกตั้งเวลาไว้บนเครื่องโดยตัวแอปเอง</p>
+
+<h2>สิ่งที่เราไม่เก็บ</h2>
+<ul>
+  <li>ไม่มีบัญชี ไม่มีการล็อกอิน ไม่มีอีเมล ไม่มีโปรไฟล์ผู้ใช้ ไม่ต้องสมัครอะไรทั้งสิ้น</li>
+  <li>ไม่มีเซิร์ฟเวอร์หรือฐานข้อมูลที่เราดูแล</li>
+  <li>ไม่มีระบบวิเคราะห์พฤติกรรม ไม่มีรายงานข้อขัดข้อง ไม่มี SDK โฆษณา และเวอร์ชันนี้ไม่มีการซื้อในแอป</li>
+  <li>ไม่มีรหัสระบุอุปกรณ์ ไม่มีรหัสโฆษณา ไม่มีหมายเลข IP เพราะแอปไม่มีสิทธิ์อินเทอร์เน็ต จึงรายงานสิ่งเหล่านี้ไม่ได้อยู่แล้ว</li>
+  <li>เราไม่ขายและไม่แบ่งปันข้อมูลส่วนบุคคลของคุณ เพราะเราไม่เคยมีมันเลย</li>
+</ul>
+
+<h2>สิทธิ์ที่ขอและเหตุผล</h2>
+<ul>
+  <li><strong>การแจ้งเตือน</strong> (<code>POST_NOTIFICATIONS</code>) เพื่อให้การเตือนของคุณแสดงขึ้นได้จริง Android จะถามคุณในครั้งแรก ถ้าคุณไม่อนุญาต แอปยังใช้งานได้ตามปกติ เพียงแต่จะไม่มีการเตือน</li>
+  <li><strong>การปลุกแบบตรงเวลา</strong> (<code>SCHEDULE_EXACT_ALARM</code>) เพื่อให้การเตือนแบบ "At time" และ "1 hour before" มาถึงตรงนาที ไม่ใช่รอจนกว่าระบบจะตื่นขึ้นมาเอง สิทธิ์นี้คุณเป็นผู้อนุญาตในการตั้งค่า Android และเพิกถอนได้ทุกเมื่อ หากไม่ได้รับสิทธิ์ แอปจะถอยไปใช้การเตือนแบบไม่ตรงนาที ซึ่งอาจมาช้ากว่ากำหนด</li>
+  <li><strong>ทำงานเมื่อเปิดเครื่อง</strong> (<code>RECEIVE_BOOT_COMPLETED</code>) เพื่อตั้งการเตือนที่ค้างไว้ใหม่หลังคุณรีสตาร์ทเครื่อง แทนที่จะหายไปเฉย ๆ</li>
+</ul>
+<p>นี่คือรายการทั้งหมด โดยเฉพาะอย่างยิ่ง แอป<strong>ไม่ได้</strong>ประกาศขอสิทธิ์อินเทอร์เน็ต</p>
+
+<h2>บิลด์สำหรับนักพัฒนา</h2>
+<p>บิลด์ที่ใช้ทดสอบระหว่างพัฒนามีการขอสิทธิ์อินเทอร์เน็ต เพราะเครื่องมือพัฒนาของ Flutter ต้องใช้สื่อสารกับแอปที่กำลังรันอยู่ บิลด์เหล่านั้นไม่เคยถูกเผยแพร่ แอปที่อยู่บน Google Play คือบิลด์รีลีส ซึ่งไม่มีสิทธิ์อินเทอร์เน็ต</p>
+
+<h2>Google Play</h2>
+<p>TimeBoard เผยแพร่ผ่าน Google Play ในฐานะสโตร์ Google เก็บข้อมูลของตนเองเกี่ยวกับการติดตั้ง การอัปเดต และข้อขัดข้อง ภายใต้<a href="https://policies.google.com/privacy">นโยบายความเป็นส่วนตัวของ Google</a> และจะเป็นผู้ดำเนินการชำระเงินหากมีการซื้อในอนาคต นั่นเป็นการเก็บข้อมูลของ Google ภายใต้เงื่อนไขของ Google ไม่ใช่ของเรา เราไม่ได้รับอะไรจากตรงนั้นนอกจากสถิติรวมแบบไม่ระบุตัวตนที่นักพัฒนาทุกคนเห็นใน Play Console</p>
+
+<h2>การสำรองข้อมูล</h2>
+<p>TimeBoard เวอร์ชันนี้ไม่มีระบบสำรองข้อมูลหรือซิงก์ของตัวเอง และไม่มีช่องทางส่งออกกระดานของคุณ หากคุณเปิดระบบสำรองข้อมูลของ Android ไว้ Android อาจรวมข้อมูลแอปไว้ในการสำรองข้อมูลบัญชี Google ของคุณตามเงื่อนไขของ Google ซึ่งเป็นความสามารถของระบบปฏิบัติการ เราไม่เห็นและไม่ได้ควบคุมส่วนนั้น</p>
+
+<h2>การเก็บรักษาและการลบข้อมูล</h2>
+<p>ข้อมูลของคุณอยู่นานเท่าที่คุณเก็บไว้ ลบกิจกรรมในแอปแล้วก็หายไป ลบโปรไฟล์แล้วกิจกรรมทั้งหมดของโปรไฟล์นั้นก็หายตามไปด้วย รวมถึงสำเนาสำรองของข้อมูลที่อ่านไม่ออกของโปรไฟล์นั้น การถอนการติดตั้ง TimeBoard จะลบทุกอย่างที่แอปเก็บไว้บนเครื่องของคุณ และเนื่องจากเราไม่มีสำเนาใด ๆ จึงไม่มีบัญชีฝั่งเราให้ปิด และไม่มีอะไรให้เราลบ</p>
+
+<h2>เด็ก</h2>
+<p>TimeBoard ไม่ได้มุ่งเป้าไปที่เด็กอายุต่ำกว่า 13 ปี (หรืออายุขั้นต่ำตามกฎหมายในประเทศของคุณ) และไม่ว่าผู้ใช้จะอายุเท่าใด แอปก็ไม่ได้เก็บข้อมูลจากใครทั้งนั้น</p>
+
+<h2>สิทธิของคุณ</h2>
+<p>ภายใต้ GDPR, พ.ร.บ.คุ้มครองข้อมูลส่วนบุคคลของไทย (PDPA), APPI ของญี่ปุ่น, PIPA ของเกาหลี, CCPA และกฎหมายทำนองเดียวกัน คุณมีสิทธิเข้าถึง แก้ไข ลบ จำกัดการประมวลผล ขอโอนย้าย และคัดค้าน เนื่องจากข้อมูลของคุณไม่เคยมาถึงเรา คุณจึงใช้สิทธิเหล่านี้ได้เองในแอปโดยตรง ทุกอย่างที่คุณกรอกไว้ปรากฏอยู่บนกระดาน แก้ไขได้ในหน้าแก้ไขกิจกรรม และลบได้ทีละกิจกรรม ทีละโปรไฟล์ หรือลบทั้งหมดด้วยการถอนการติดตั้ง เราไม่มีข้อมูลส่วนบุคคลของคุณให้ส่งออก แก้ไข หรือลบแทนคุณ แต่คุณยังติดต่อเรามาได้เสมอหากมีคำถามหรือข้อร้องเรียน</p>
+
+<h2>ความปลอดภัย</h2>
+<p>ข้อมูลของคุณอยู่ในพื้นที่จัดเก็บส่วนตัวของแอป ซึ่ง Android แยกออกจากแอปอื่น และเมื่อไม่มีการส่งข้อมูลออกไปเลย ก็ไม่มีเซิร์ฟเวอร์หรือช่องทางส่งข้อมูลที่จะถูกเจาะได้ อย่างไรก็ตาม ผู้ที่เข้าถึงเครื่องที่ปลดล็อกอยู่จะอ่านกิจกรรมของคุณได้ เราจึงแนะนำให้ตั้งล็อกหน้าจอไว้</p>
+
+<h2>การเปลี่ยนแปลงนโยบายนี้</h2>
+<p>เราอาจปรับปรุงนโยบายนี้เป็นครั้งคราว การเปลี่ยนแปลงที่มีนัยสำคัญจะปรากฏที่นี่พร้อมวันที่ "ปรับปรุงล่าสุด" ใหม่ และจะปรากฏก่อนที่แอปเวอร์ชันที่เกี่ยวข้องจะถูกปล่อยออกมาเสมอ</p>
+
+<h2>ติดต่อเรา</h2>
+<p>คำถาม ข้อร้องเรียน หรือคำขอเกี่ยวกับข้อมูล: <a href="mailto:overdrivelabs998@gmail.com">overdrivelabs998@gmail.com</a> หากคุณอยู่ในสหภาพยุโรปหรือสหราชอาณาจักรและไม่พอใจคำตอบของเรา คุณสามารถร้องเรียนต่อหน่วยงานคุ้มครองข้อมูลในประเทศของคุณได้</p>
+
+<div class="future">
+<h2>สิ่งที่วางแผนจะเปลี่ยน — โฆษณาและการซื้อ Pro</h2>
+<p>TimeBoard เวอร์ชันถัดไปมีแผนจะแสดงโฆษณาจาก Google AdMob บนหน้ารายละเอียดกิจกรรม พร้อมโฆษณาเต็มหน้าจอเป็นครั้งคราวเมื่อสลับแท็บ และจะมีการซื้อ Pro แบบครั้งเดียวผ่าน Google Play เพื่อตัดโฆษณาออก <strong>เวอร์ชันปัจจุบันคือ 0.3.0 ไม่มีโฆษณาและไม่ได้ขายอะไรทั้งสิ้น</strong> และข้อความข้างต้นเรื่องการไม่มีสิทธิ์อินเทอร์เน็ตเป็นความจริงสำหรับเวอร์ชันนี้ ณ วันนี้</p>
+<p>เวอร์ชันดังกล่าวจะต้องใช้อินเทอร์เน็ต และ Google จะเข้ามาเกี่ยวข้องในฐานะผู้ให้บริการแยกต่างหากทั้งด้านโฆษณาและการชำระเงิน โดยเก็บข้อมูลภายใต้<a href="https://policies.google.com/privacy">นโยบายความเป็นส่วนตัวของ Google เอง</a> ในกรณีที่กฎหมายกำหนด คุณจะถูกขอความยินยอมเรื่องโฆษณาแบบปรับตามบุคคลก่อนที่จะมีโฆษณาใดแสดงขึ้น เราจะปรับปรุงนโยบายนี้พร้อมรายละเอียดและเผยแพร่<em>ก่อน</em>ที่เวอร์ชันนั้นจะถูกปล่อย เพื่อให้นโยบายที่ลิงก์อยู่บน Google Play ตรงกับสิ่งที่แอปบน Google Play ทำจริงเสมอ</p>
+</div>
+
+<p class="version">นโยบายนี้อธิบาย TimeBoard เวอร์ชัน 0.3.0</p>
+
+<hr>
+
+<!-- ==================== 日本語 ==================== -->
+<h2 id="ja" class="lang-head">日本語</h2>
+
+<p>TimeBoard（以下「本アプリ」）は、大切な日までの残り時間を並べておくカウントダウンボードです。本ポリシーでは、本アプリが何を保存するのか、なぜその権限を求めるのか、ユーザーが何を管理できるのかを説明します。<strong>本アプリにはユーザーアカウントがなく、当社のサーバーもありません。</strong></p>
+
+<div class="callout">
+  <strong>入力した内容が端末の外に出ることはありません。</strong>Google Play で配信している TimeBoard は、インターネット権限をそもそも要求していません。そのため本アプリは、当社にも他のどこにも、データを送ることができません。予定・プロフィール・設定は端末内のアプリ専用ストレージに書き込まれ、そこに留まります。
+</div>
+
+<h2>運営者</h2>
+<p>TimeBoard は Overdrive Labs が提供しています。GDPR 上は当社がデータ管理者にあたりますが、実際に当社がデータを受け取ることはありません。データは端末内でのみ作成・保存されます。ご連絡は <a href="mailto:overdrivelabs998@gmail.com">overdrivelabs998@gmail.com</a> までどうぞ。</p>
+
+<h2>端末内に保存されるもの</h2>
+<ul>
+  <li><strong>予定。</strong>各予定について、タイトル、日付と時刻、選択したタイムゾーン（未選択の場合は端末のタイムゾーンに追随します）、カテゴリー、アイコンと色、繰り返し設定、リマインダー設定、場所（任意の自由入力）、メモ（任意の自由入力）、重要マークの有無、選んだカバー画像、そして最初に保存した日時を保存します。</li>
+  <li><strong>プロフィール。</strong>プロフィールごとに独立したボードがあり、それぞれ専用の予定と、ユーザーが入力した名前を持ちます。どのプロフィールを使用中かも記憶します。</li>
+  <li><strong>設定。</strong>テーマ、週の始まりを月曜にするか、過ぎた予定を隠すか、通知のオン・オフ、既定のリマインダー、時刻の表示方法、そして Life タブを設定した場合に限り、生年月日と Life ボードが描く年数。</li>
+  <li><strong>内部処理用の小さな値。</strong>本アプリが最後に確認した端末のタイムゾーンと、現在どのリマインダーが予約済みかの記録（不要な再登録を避けるためのものです）。</li>
+  <li><strong>読み取れなくなったデータの控え。</strong>保存済みの予定一覧が壊れた場合、本アプリはそれを削除せず、生のテキストを端末内の別のキーに保存します。黙ってデータが失われることを防ぐためです。これも他と同じく端末内に留まります。</li>
+</ul>
+<p>いずれも端末内のアプリ専用サンドボックスにある設定ストレージに保存されます。クラウド上の控えはなく、当社側に見られるものは何もありません。</p>
+
+<h2>位置情報・写真・連絡先</h2>
+<p>予定の「場所」は「第2ターミナル」のようにユーザーが入力する一行のテキストにすぎません。本アプリが端末の位置情報を読み取ることはなく、その権限を求めることもありません。カバー画像はアプリに同梱された画像を一覧から選ぶ方式で、写真ライブラリ、カメラ、連絡先、ファイル、マイク、カレンダーにはアクセスしません。</p>
+
+<h2>タイムゾーン</h2>
+<p>正しくカウントダウンするため、本アプリは端末の現在のタイムゾーン名（例: <code>Asia/Tokyo</code>）を OS から読み取ります。この名前は端末内に留まります。利用するタイムゾーンデータベースはアプリに同梱されているため、ネットワーク経由で参照することは一切ありません。</p>
+
+<h2>通知</h2>
+<p>リマインダーは端末内で組み立てられ、Android が表示します。内容は予定のタイトルと、時間に関する短い一行（「Starts now」「In 1 hour · 09:00」「Tomorrow · 09:00」など）です。プッシュ配信サービスは使っていません。そもそも存在せず、すべてのリマインダーはアプリ自身が端末内で予約しています。</p>
+
+<h2>収集しないもの</h2>
+<ul>
+  <li>アカウント、ログイン、メールアドレス、ユーザープロフィールはありません。登録するものがありません。</li>
+  <li>当社が運用するサーバーやデータベースはありません。</li>
+  <li>解析、クラッシュレポート、広告 SDK は使っておらず、本バージョンにアプリ内課金はありません。</li>
+  <li>端末識別子、広告 ID、IP アドレスも取得しません。インターネット権限がないため、そもそも送信できません。</li>
+  <li>個人データの販売・共有は行いません。そもそも当社が保有していません。</li>
+</ul>
+
+<h2>権限と必要な理由</h2>
+<ul>
+  <li><strong>通知</strong>（<code>POST_NOTIFICATIONS</code>）— リマインダーを実際に表示するために必要です。初回に Android が確認します。拒否しても本アプリは通常どおり使えますが、リマインダーは届きません。</li>
+  <li><strong>正確なアラーム</strong>（<code>SCHEDULE_EXACT_ALARM</code>）—「At time」と「1 hour before」のリマインダーを、システムの都合ではなく分単位で届けるために使います。この権限は Android の設定でユーザー自身が許可し、いつでも取り消せます。許可がない場合は不正確なリマインダーに切り替わり、遅れて届くことがあります。</li>
+  <li><strong>起動時実行</strong>（<code>RECEIVE_BOOT_COMPLETED</code>）— 端末を再起動したあとに予約済みのリマインダーを復元し、黙って消えてしまわないようにします。</li>
+</ul>
+<p>権限はこれですべてです。とくに、本アプリはインターネット権限を<strong>宣言していません</strong>。</p>
+
+<h2>開発用ビルド</h2>
+<p>開発中のテストビルドにはインターネット権限が含まれます。Flutter の開発ツールが実行中のアプリと通信するために必要だからです。これらのビルドが公開されることはありません。Google Play にあるのはリリースビルドで、インターネット権限を持ちません。</p>
+
+<h2>Google Play について</h2>
+<p>TimeBoard は Google Play で配信しています。ストアである Google は、インストール、更新、クラッシュに関するデータを<a href="https://policies.google.com/privacy">Google のプライバシーポリシー</a>に基づいて独自に収集し、将来購入機能が加わればその決済も Google Play が処理します。これは Google の規約に基づく Google の収集であり、当社のものではありません。当社がそこから受け取るのは、どの開発者も Play Console で見られる匿名の集計統計だけです。</p>
+
+<h2>バックアップ</h2>
+<p>本バージョンの TimeBoard には独自のバックアップも同期もなく、ボードを書き出す手段もありません。Android のシステムバックアップを有効にしている場合、Android が Google の規約に基づき Google アカウントのバックアップにアプリデータを含めることがあります。これは OS の機能であり、当社が見ることも制御することもできません。</p>
+
+<h2>データの保持と削除</h2>
+<p>データはユーザーが残している間だけ保持されます。アプリ内で予定を削除すればその予定は消え、プロフィールを削除すればその予定も、読み取れなくなったデータの控えもまとめて消えます。TimeBoard をアンインストールすれば、端末に保存された内容はすべて削除されます。当社は控えを持たないため、閉鎖すべきアカウントも、当社が削除すべきものもありません。</p>
+
+<h2>お子様について</h2>
+<p>TimeBoard は 13 歳未満（またはお住まいの国の相当する最低年齢未満）のお子様を対象としていません。年齢にかかわらず、そもそも誰からもデータを収集していません。</p>
+
+<h2>ユーザーの権利</h2>
+<p>GDPR、タイの PDPA、日本の個人情報保護法（APPI）、韓国の PIPA、CCPA などの法令に基づき、アクセス、訂正、削除、処理の制限、データポータビリティ、異議申立ての権利があります。データが当社に届かないため、これらの権利はアプリ内で直接行使できます。入力した内容はすべてボード上に表示され、編集画面で修正でき、予定単位・プロフィール単位、あるいはアンインストールで削除できます。当社には書き出し・訂正・消去すべき個人データがありません。もちろん、ご質問や苦情はいつでもお寄せいただけます。</p>
+
+<h2>セキュリティ</h2>
+<p>データは Android が他のアプリから隔離するアプリ専用ストレージにあります。送信が一切ないため、それを運ぶサーバーや通信経路が侵害されることもありません。ただし、ロック解除された端末に物理的にアクセスされれば予定を読まれる可能性があるため、画面ロックの設定をおすすめします。</p>
+
+<h2>本ポリシーの変更</h2>
+<p>本ポリシーは随時更新する場合があります。重要な変更は「最終更新日」を新しくして本ページに掲載し、必ず該当するアプリバージョンの公開前に反映します。</p>
+
+<h2>お問い合わせ</h2>
+<p>ご質問、苦情、データに関するご請求は <a href="mailto:overdrivelabs998@gmail.com">overdrivelabs998@gmail.com</a> までお寄せください。EU または英国にお住まいで当社の対応にご不満がある場合は、お住まいの国のデータ保護機関に苦情を申し立てることができます。</p>
+
+<div class="future">
+<h2>今後の予定 — 広告と Pro 買い切り</h2>
+<p>今後のバージョンでは、Google AdMob の広告を予定の詳細画面に表示し、タブ切り替え時に全画面広告をときどき表示すること、および広告を消す Pro 買い切り購入を Google Play 経由で提供することを計画しています。<strong>現行バージョン 0.3.0 では広告は表示されず、販売するものもありません。</strong>インターネット権限がないという上記の説明は、現時点の本バージョンについて事実です。</p>
+<p>そのバージョンではインターネット接続が必要になり、広告と課金のいずれについても Google が別個の提供者として関与し、<a href="https://policies.google.com/privacy">Google 自身のプライバシーポリシー</a>に基づいてデータを収集します。法令で求められる地域では、広告が表示される前にパーソナライズド広告への同意をおうかがいします。該当するバージョンを公開する<em>前に</em>、詳細を加えて本ポリシーを更新・公開します。Google Play からリンクされているポリシーが、Google Play 上のアプリの実際の動作と常に一致するようにするためです。</p>
+</div>
+
+<p class="version">本ポリシーは TimeBoard バージョン 0.3.0 についての記載です。</p>
+
+<hr>
+
+<!-- ==================== 한국어 ==================== -->
+<h2 id="ko" class="lang-head">한국어</h2>
+
+<p>TimeBoard(이하 "앱")는 소중한 날짜까지 남은 시간을 한눈에 보여주는 카운트다운 보드입니다. 이 정책은 앱이 무엇을 저장하는지, 각 권한을 왜 요청하는지, 이용자가 무엇을 통제할 수 있는지 설명합니다. <strong>앱에는 계정 기능이 없고, 저희가 운영하는 서버도 없습니다.</strong></p>
+
+<div class="callout">
+  <strong>입력하신 내용은 휴대폰 밖으로 나갈 수 없습니다.</strong> Google Play에 올라와 있는 TimeBoard는 인터넷 권한을 아예 요청하지 않습니다. 따라서 앱은 저희에게도, 다른 누구에게도 데이터를 보낼 수 없습니다. 일정, 프로필, 설정은 기기 안 앱 전용 저장 공간에 기록되어 그대로 머무릅니다.
+</div>
+
+<h2>운영자</h2>
+<p>TimeBoard는 Overdrive Labs가 만들어 배포합니다. GDPR상으로는 저희가 데이터 관리자에 해당하지만, 실제로 저희가 이용자의 데이터를 받는 일은 없습니다. 모든 데이터는 기기 안에서만 만들어지고 저장됩니다. 문의는 <a href="mailto:overdrivelabs998@gmail.com">overdrivelabs998@gmail.com</a>로 보내주세요.</p>
+
+<h2>기기에 저장되는 정보</h2>
+<ul>
+  <li><strong>일정.</strong> 일정마다 제목, 날짜와 시각, 선택한 시간대(선택하지 않으면 휴대폰의 시간대를 따릅니다), 카테고리, 아이콘과 색상, 반복 설정, 알림 설정, 장소(직접 입력하는 선택 항목), 메모(직접 입력하는 선택 항목), 중요 표시 여부, 고른 커버 이미지, 그리고 처음 저장한 시각을 저장합니다.</li>
+  <li><strong>프로필.</strong> 프로필마다 별도의 보드가 있고, 각자의 일정과 이용자가 직접 입력한 이름을 가집니다. 현재 어떤 프로필을 쓰고 있는지도 기억합니다.</li>
+  <li><strong>설정.</strong> 테마, 한 주를 월요일에 시작할지 여부, 지난 일정을 숨길지 여부, 알림 사용 여부, 기본 알림 시점, 시간 표시 방식, 그리고 Life 탭을 설정한 경우에만 생년월일과 Life 보드가 그리는 연 수.</li>
+  <li><strong>내부 동작용 작은 값.</strong> 앱이 마지막으로 확인한 기기 시간대와, 현재 어떤 알림이 예약돼 있는지에 대한 기록(불필요하게 다시 예약하지 않기 위한 것입니다).</li>
+  <li><strong>읽을 수 없게 된 데이터의 사본.</strong> 저장된 일정 목록이 손상되면 앱은 그것을 지우지 않고 원본 텍스트를 기기 안의 별도 키에 보관합니다. 데이터가 조용히 사라지는 일을 막기 위한 것이며, 이 사본 역시 다른 데이터와 마찬가지로 기기 안에만 있습니다.</li>
+</ul>
+<p>이 모두는 기기 안 앱 전용 샌드박스의 설정 저장소에 보관됩니다. 클라우드 사본은 없고, 저희 쪽에서 들여다볼 수 있는 것도 없습니다.</p>
+
+<h2>위치, 사진, 연락처</h2>
+<p>일정의 "장소"는 "제2터미널"처럼 이용자가 직접 입력하는 한 줄의 글자일 뿐입니다. 앱은 기기의 실제 위치를 읽지 않으며, 그 권한을 요청하지도 않습니다. 커버 이미지는 앱에 함께 들어 있는 그림 중에서 고르는 방식이라, 사진 라이브러리, 카메라, 연락처, 파일, 마이크, 캘린더에는 접근하지 않습니다.</p>
+
+<h2>시간대</h2>
+<p>정확하게 카운트다운하기 위해 앱은 운영체제에서 기기의 현재 시간대 이름(예: <code>Asia/Seoul</code>)을 읽습니다. 이 이름은 기기 안에만 남습니다. 앱이 사용하는 시간대 데이터베이스도 앱 안에 함께 들어 있어, 네트워크로 조회하는 일은 전혀 없습니다.</p>
+
+<h2>알림</h2>
+<p>알림은 기기 안에서 만들어져 Android가 표시합니다. 내용은 일정 제목과 시간에 대한 짧은 한 줄("Starts now", "In 1 hour · 09:00", "Tomorrow · 09:00" 등)입니다. 푸시 서비스를 거치지 않습니다. 애초에 그런 서비스가 없고, 모든 알림은 앱이 기기 안에서 직접 예약합니다.</p>
+
+<h2>수집하지 않는 것</h2>
+<ul>
+  <li>계정, 로그인, 이메일 주소, 이용자 프로필이 없습니다. 가입할 것 자체가 없습니다.</li>
+  <li>저희가 운영하는 서버나 데이터베이스가 없습니다.</li>
+  <li>분석 도구, 오류 보고, 광고 SDK를 쓰지 않으며, 이 버전에는 인앱 결제가 없습니다.</li>
+  <li>기기 식별자, 광고 ID, IP 주소도 수집하지 않습니다. 인터넷 권한이 없으므로 보낼 수도 없습니다.</li>
+  <li>개인정보를 팔거나 공유하지 않습니다. 애초에 저희가 가지고 있지 않기 때문입니다.</li>
+</ul>
+
+<h2>요청하는 권한과 그 이유</h2>
+<ul>
+  <li><strong>알림</strong>(<code>POST_NOTIFICATIONS</code>) — 알림이 실제로 표시되도록 하기 위해서입니다. 처음 실행할 때 Android가 물어보며, 거부해도 앱은 정상적으로 쓸 수 있고 알림만 오지 않습니다.</li>
+  <li><strong>정확한 알람</strong>(<code>SCHEDULE_EXACT_ALARM</code>) — "At time"과 "1 hour before" 알림이 시스템 사정에 따라 늦지 않고 분 단위로 도착하게 하기 위해서입니다. 이 권한은 Android 설정에서 이용자가 직접 허용하고 언제든 철회할 수 있습니다. 허용하지 않으면 앱은 부정확한 알림으로 대체하며, 이 경우 늦게 도착할 수 있습니다.</li>
+  <li><strong>부팅 시 실행</strong>(<code>RECEIVE_BOOT_COMPLETED</code>) — 휴대폰을 다시 켠 뒤 예약된 알림을 되살려, 알림이 소리 없이 사라지지 않도록 합니다.</li>
+</ul>
+<p>권한은 이것이 전부입니다. 특히 앱은 인터넷 권한을 <strong>선언하지 않습니다</strong>.</p>
+
+<h2>개발용 빌드</h2>
+<p>개발 중에 쓰는 테스트 빌드에는 인터넷 권한이 들어갑니다. Flutter 개발 도구가 실행 중인 앱과 통신하는 데 필요하기 때문입니다. 이런 빌드는 배포되지 않습니다. Google Play에 올라간 것은 릴리스 빌드이며, 인터넷 권한이 없습니다.</p>
+
+<h2>Google Play</h2>
+<p>TimeBoard는 Google Play를 통해 배포됩니다. 스토어인 Google은 설치, 업데이트, 비정상 종료에 관한 데이터를 <a href="https://policies.google.com/privacy">Google 개인정보처리방침</a>에 따라 자체적으로 수집하며, 앞으로 구매 기능이 생기면 결제도 Google Play가 처리합니다. 이는 Google의 약관에 따른 Google의 수집이지 저희의 수집이 아닙니다. 저희가 그로부터 받는 것은 모든 개발자가 Play Console에서 보는 익명의 집계 통계뿐입니다.</p>
+
+<h2>백업</h2>
+<p>이 버전의 TimeBoard에는 자체 백업이나 동기화가 없고, 보드를 내보내는 기능도 없습니다. 기기에서 Android 시스템 백업을 켜 두셨다면, Android가 Google의 약관에 따라 앱 데이터를 Google 계정 백업에 포함할 수 있습니다. 이는 운영체제의 기능이며 저희가 보거나 제어하지 않습니다.</p>
+
+<h2>보관과 삭제</h2>
+<p>데이터는 이용자가 남겨 두는 동안에만 남아 있습니다. 앱에서 일정을 지우면 그 일정은 사라지고, 프로필을 지우면 그 프로필의 일정과 읽을 수 없게 된 데이터의 사본까지 함께 사라집니다. TimeBoard를 삭제하면 앱이 기기에 저장한 모든 것이 지워집니다. 저희는 사본을 가지고 있지 않으므로, 닫을 계정도 저희가 지울 것도 없습니다.</p>
+
+<h2>어린이</h2>
+<p>TimeBoard는 만 13세 미만(또는 거주 국가의 해당 최소 연령 미만) 어린이를 대상으로 하지 않습니다. 나이와 관계없이 누구에게서도 데이터를 수집하지 않습니다.</p>
+
+<h2>이용자의 권리</h2>
+<p>GDPR, 태국 PDPA, 일본 APPI, 한국 개인정보 보호법(PIPA), CCPA 및 유사한 법률에 따라 이용자는 열람, 정정, 삭제, 처리 제한, 이동, 반대의 권리를 가집니다. 데이터가 저희에게 도달하지 않으므로 이 권리들은 앱 안에서 직접 행사하시면 됩니다. 입력한 내용은 모두 보드에 보이고, 일정 편집 화면에서 고칠 수 있으며, 일정 단위·프로필 단위로 또는 앱 삭제로 지울 수 있습니다. 저희에게는 대신 내보내거나 정정하거나 삭제할 개인정보가 없습니다. 그래도 궁금한 점이나 불만이 있으시면 언제든 연락 주셔도 됩니다.</p>
+
+<h2>보안</h2>
+<p>데이터는 Android가 다른 앱과 분리해 두는 앱 전용 저장 공간에 있습니다. 전송 자체가 없으므로 그 데이터를 담고 있는 서버나 통신 경로가 침해될 일도 없습니다. 다만 잠금이 풀린 기기에 물리적으로 접근하면 일정을 읽을 수 있으므로, 화면 잠금을 켜 두시길 권합니다.</p>
+
+<h2>정책 변경</h2>
+<p>이 정책은 수시로 갱신될 수 있습니다. 중요한 변경은 새로운 "최종 업데이트" 날짜와 함께 이 페이지에 반영하며, 해당 앱 버전이 공개되기 전에 항상 먼저 게시합니다.</p>
+
+<h2>문의</h2>
+<p>질문, 불만, 데이터 관련 요청은 <a href="mailto:overdrivelabs998@gmail.com">overdrivelabs998@gmail.com</a>로 보내주세요. EU 또는 영국에 거주하시고 저희 답변에 만족하지 못하신 경우, 거주 국가의 데이터 보호 감독기관에 민원을 제기하실 수 있습니다.</p>
+
+<div class="future">
+<h2>예정된 변경 — 광고와 Pro 구매</h2>
+<p>앞으로의 버전에서는 일정 상세 화면에 Google AdMob 광고를 표시하고, 탭을 옮길 때 이따금 전면 광고를 보여주며, 광고를 없애는 1회성 Pro 구매를 Google Play를 통해 제공할 계획입니다. <strong>현재 버전인 0.3.0에는 광고가 없고 판매하는 것도 없습니다.</strong> 인터넷 권한이 없다는 위의 설명은 오늘 기준으로 이 버전에 대해 사실입니다.</p>
+<p>해당 버전은 인터넷 연결이 필요하며, 광고와 결제 모두에 Google이 별도의 제공자로 관여해 <a href="https://policies.google.com/privacy">Google 자체의 개인정보처리방침</a>에 따라 데이터를 수집하게 됩니다. 법이 요구하는 지역에서는 광고가 표시되기 전에 맞춤형 광고에 대한 동의를 여쭙습니다. 해당 버전을 출시하기 <em>전에</em> 구체적인 내용을 담아 이 정책을 갱신하고 게시하겠습니다. Google Play에 연결된 정책이 Google Play에 올라간 앱의 실제 동작과 항상 일치하도록 하기 위해서입니다.</p>
+</div>
+
+<p class="version">이 정책은 TimeBoard 버전 0.3.0을 설명합니다.</p>

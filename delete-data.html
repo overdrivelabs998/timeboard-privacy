@@ -1,0 +1,274 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TimeBoard – Delete Your Data</title>
+<style>
+  :root { --fg:#1F1D1A; --bg:#FFFFFF; --muted:#6B6259; --rule:#E2D9CD;
+          --accent:#A8583C; --chip:rgba(127,127,127,.13); }
+  @media (prefers-color-scheme: dark) {
+    :root { --fg:#F1EDE6; --bg:#161514; --muted:#A79C8E; --rule:#3A352F;
+            --accent:#E8926A; --chip:rgba(255,255,255,.09); }
+  }
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+         "Noto Sans Thai", "Noto Sans JP", "Noto Sans KR", sans-serif;
+         max-width: 780px; margin: 0 auto; padding: 24px 20px 72px;
+         line-height: 1.68; color: var(--fg); background: var(--bg); }
+  h1 { font-size: 1.55em; line-height: 1.3; margin-bottom: .2em; }
+  h2 { font-size: 1.14em; margin-top: 1.9em; margin-bottom: .5em; }
+  .lang-head { font-size: 1.36em; padding-bottom: .25em;
+               border-bottom: 2px solid var(--accent); }
+  p, li { overflow-wrap: break-word; }
+  ul, ol { padding-left: 1.3em; }
+  li { margin-bottom: .5em; }
+  a { color: var(--accent); }
+  hr { margin: 3.4em 0; border: none; border-top: 1px solid var(--rule); }
+  .updated { color: var(--muted); font-size: .92em; margin-top: 0; }
+  .callout { border-left: 3px solid var(--accent); background: var(--chip);
+             padding: 12px 16px; margin: 1.5em 0; border-radius: 0 6px 6px 0; }
+  nav { background: var(--chip); border-radius: 8px; padding: 12px 16px;
+        margin: 1.5em 0 2.5em; font-size: .95em; }
+  nav ul { list-style: none; padding: 0; margin: .4em 0 0;
+           display: flex; flex-wrap: wrap; gap: .5em 1.4em; }
+  nav li { margin: 0; }
+  table { border-collapse: collapse; width: 100%; margin: 1em 0; }
+  th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule);
+           vertical-align: top; }
+  th { font-size: .92em; color: var(--muted); font-weight: 600; }
+  .steps li { margin-bottom: .7em; }
+</style>
+
+<h1>TimeBoard – Delete Your Data</h1>
+<p class="updated"><em>Last updated: 16 September 2026</em></p>
+
+<nav>
+  <strong>Languages · ภาษา · 言語 · 언어</strong>
+  <ul>
+    <li><a href="#en">English</a></li>
+    <li><a href="#th">ภาษาไทย</a></li>
+    <li><a href="#ja">日本語</a></li>
+    <li><a href="#ko">한국어</a></li>
+  </ul>
+  <p style="margin:.7em 0 0"><a href="./">Privacy policy · นโยบายความเป็นส่วนตัว · プライバシーポリシー · 개인정보처리방침</a></p>
+</nav>
+
+<!-- ==================== ENGLISH ==================== -->
+<h2 id="en" class="lang-head">English</h2>
+
+<p>TimeBoard ("the app") has no user accounts and no server of ours. Everything the app stores is on your own device, so you delete it yourself, from inside the app or from Android's settings, and it is gone straight away.</p>
+
+<div class="callout">
+  <strong>There is no account to delete.</strong> We hold no copy of your events, profiles or settings on any server, so there is nothing to request from us and no waiting period. Deleting on your device is the complete deletion — and it cannot be undone. This version of TimeBoard has no backup and no sync, so nothing is kept anywhere else.
+</div>
+
+<h2>Delete one event</h2>
+<ul>
+  <li>On the <strong>Board</strong>, tap the <strong>⋮</strong> menu on the event's card and choose <strong>Delete</strong>.</li>
+  <li>Or open the event and tap <strong>Delete</strong> on the event's own screen (it is also in the <strong>⋮</strong> menu at the top).</li>
+</ul>
+<p>Either way the app asks <strong>"Delete event?"</strong> and shows the event's title; tap <strong>Delete</strong> to confirm. The event and any reminders it had scheduled are removed.</p>
+
+<h2>Delete a whole profile and everything in it</h2>
+<ol class="steps">
+  <li>Go to the <strong>More</strong> tab.</li>
+  <li>Tap the <strong>profile card</strong> at the top to open <strong>Profiles</strong>.</li>
+  <li>Tap the profile you want to remove. The <strong>Rename profile</strong> dialog opens.</li>
+  <li>Tap <strong>Delete</strong>, then confirm.</li>
+</ol>
+<p>This deletes the profile, all of its events, and the safety copy the app keeps if a stored list was ever unreadable. The <strong>Delete</strong> button only appears when you have more than one profile — the last remaining profile cannot be deleted, so to empty that one, delete its events individually or clear the app's storage as described below.</p>
+
+<h2>Remove the Demo profile and its sample events</h2>
+<ol class="steps">
+  <li>Go to <strong>More</strong> → <strong>Settings</strong>.</li>
+  <li>Under <strong>Demo data</strong>, turn <strong>Demo mode</strong> off.</li>
+  <li>Confirm at the <strong>"Turn off demo data?"</strong> prompt, which tells you how many sample events go with it.</li>
+</ol>
+<p>The Demo profile and its sample events are removed and the app returns to the profile you were using before.</p>
+
+<h2>Erase everything at once</h2>
+<ul>
+  <li><strong>Uninstall TimeBoard.</strong> Android deletes the app's private storage with it.</li>
+  <li><strong>Or clear the storage:</strong> Android <strong>Settings</strong> → <strong>Apps</strong> → <strong>TimeBoard</strong> → <strong>Storage</strong> → <strong>Clear storage</strong>.</li>
+</ul>
+<p>Both wipe every event, every profile and every setting completely, and the app starts again as a fresh install.</p>
+
+<h2>What is kept, and by whom</h2>
+<table>
+  <tr><th>Data</th><th>Where it lives</th><th>How to remove it</th></tr>
+  <tr><td>Events, profiles, settings</td><td>Your device only</td><td>Delete in the app, clear storage, or uninstall</td></tr>
+  <tr><td>Scheduled reminders</td><td>Your device only</td><td>Removed with the event, or with the app</td></tr>
+  <tr><td>Anything on our servers</td><td>Nothing — we have none</td><td>Nothing to remove</td></tr>
+</table>
+
+<h2>Retention</h2>
+<p>Your data is kept on your device for as long as you keep it, and no longer. There is no server copy and no backup of our own, so deleting in the app, clearing the storage or uninstalling ends it completely. If you have Android's own system backup switched on, your device may hold app data in your Google account backup under Google's terms; that is a feature of the operating system, which we neither see nor control.</p>
+
+<h2>Need help?</h2>
+<p>If you cannot complete a deletion, write to <a href="mailto:overdrivelabs998@gmail.com">overdrivelabs998@gmail.com</a> and we will help. See also the <a href="./">privacy policy</a>.</p>
+
+<hr>
+
+<!-- ==================== ไทย ==================== -->
+<h2 id="th" class="lang-head">ภาษาไทย</h2>
+
+<p>TimeBoard ("แอป") ไม่มีระบบบัญชีผู้ใช้ และเราไม่มีเซิร์ฟเวอร์ใด ๆ ทุกอย่างที่แอปเก็บอยู่บนเครื่องของคุณเอง คุณจึงลบได้ด้วยตัวเอง ทั้งจากในแอปและจากการตั้งค่าของ Android และข้อมูลจะหายไปทันที</p>
+
+<div class="callout">
+  <strong>ไม่มีบัญชีให้ลบ</strong> เราไม่มีสำเนากิจกรรม โปรไฟล์ หรือการตั้งค่าของคุณบนเซิร์ฟเวอร์ใด ๆ จึงไม่มีอะไรที่ต้องยื่นคำขอกับเรา และไม่มีระยะเวลารอคอย การลบบนเครื่องของคุณคือการลบที่สมบูรณ์แล้ว และกู้คืนไม่ได้ TimeBoard เวอร์ชันนี้ไม่มีระบบสำรองข้อมูลและไม่มีการซิงก์ จึงไม่มีอะไรถูกเก็บไว้ที่อื่นเลย
+</div>
+
+<h2>ลบกิจกรรมทีละรายการ</h2>
+<ul>
+  <li>ที่หน้า <strong>Board</strong> แตะเมนู <strong>⋮</strong> บนการ์ดของกิจกรรมนั้น แล้วเลือก <strong>Delete</strong></li>
+  <li>หรือเปิดกิจกรรมขึ้นมา แล้วแตะปุ่ม <strong>Delete</strong> ในหน้ารายละเอียด (อยู่ในเมนู <strong>⋮</strong> ด้านบนด้วยเช่นกัน)</li>
+</ul>
+<p>ไม่ว่าทางไหน แอปจะถามยืนยันว่า <strong>"Delete event?"</strong> พร้อมแสดงชื่อกิจกรรม แตะ <strong>Delete</strong> เพื่อยืนยัน กิจกรรมนั้นและการแจ้งเตือนที่ตั้งไว้ของมันจะถูกลบไปด้วย</p>
+
+<h2>ลบทั้งโปรไฟล์พร้อมทุกอย่างในนั้น</h2>
+<ol class="steps">
+  <li>ไปที่แท็บ <strong>More</strong></li>
+  <li>แตะ <strong>การ์ดโปรไฟล์</strong> ด้านบนเพื่อเปิดหน้า <strong>Profiles</strong></li>
+  <li>แตะโปรไฟล์ที่ต้องการลบ หน้าต่าง <strong>Rename profile</strong> จะเปิดขึ้น</li>
+  <li>แตะ <strong>Delete</strong> แล้วยืนยัน</li>
+</ol>
+<p>การทำเช่นนี้จะลบโปรไฟล์ กิจกรรมทั้งหมดในโปรไฟล์นั้น และสำเนาสำรองที่แอปเก็บไว้กรณีที่เคยอ่านรายการที่บันทึกไว้ไม่ได้ ปุ่ม <strong>Delete</strong> จะปรากฏก็ต่อเมื่อคุณมีมากกว่าหนึ่งโปรไฟล์เท่านั้น โปรไฟล์สุดท้ายที่เหลืออยู่ลบไม่ได้ หากต้องการล้างโปรไฟล์นั้น ให้ลบกิจกรรมทีละรายการ หรือล้างพื้นที่จัดเก็บของแอปตามวิธีด้านล่าง</p>
+
+<h2>ลบโปรไฟล์ Demo และกิจกรรมตัวอย่าง</h2>
+<ol class="steps">
+  <li>ไปที่ <strong>More</strong> → <strong>Settings</strong></li>
+  <li>ในหัวข้อ <strong>Demo data</strong> ปิดสวิตช์ <strong>Demo mode</strong></li>
+  <li>ยืนยันที่หน้าต่าง <strong>"Turn off demo data?"</strong> ซึ่งจะบอกด้วยว่ามีกิจกรรมตัวอย่างกี่รายการที่จะถูกลบไปพร้อมกัน</li>
+</ol>
+<p>โปรไฟล์ Demo และกิจกรรมตัวอย่างจะถูกลบ และแอปจะกลับไปยังโปรไฟล์ที่คุณใช้อยู่ก่อนหน้านั้น</p>
+
+<h2>ลบทุกอย่างในครั้งเดียว</h2>
+<ul>
+  <li><strong>ถอนการติดตั้ง TimeBoard</strong> Android จะลบพื้นที่จัดเก็บส่วนตัวของแอปไปพร้อมกัน</li>
+  <li><strong>หรือล้างพื้นที่จัดเก็บ:</strong> การตั้งค่า Android → <strong>แอป</strong> → <strong>TimeBoard</strong> → <strong>ที่จัดเก็บ</strong> → <strong>ล้างพื้นที่จัดเก็บ</strong></li>
+</ul>
+<p>ทั้งสองวิธีจะล้างกิจกรรม โปรไฟล์ และการตั้งค่าทั้งหมดอย่างสมบูรณ์ แอปจะเริ่มต้นใหม่เหมือนเพิ่งติดตั้ง</p>
+
+<h2>อะไรถูกเก็บไว้ และใครเป็นผู้เก็บ</h2>
+<table>
+  <tr><th>ข้อมูล</th><th>เก็บอยู่ที่ไหน</th><th>ลบอย่างไร</th></tr>
+  <tr><td>กิจกรรม โปรไฟล์ การตั้งค่า</td><td>เครื่องของคุณเท่านั้น</td><td>ลบในแอป ล้างพื้นที่จัดเก็บ หรือถอนการติดตั้ง</td></tr>
+  <tr><td>การแจ้งเตือนที่ตั้งไว้</td><td>เครื่องของคุณเท่านั้น</td><td>ถูกลบพร้อมกิจกรรม หรือพร้อมการถอนการติดตั้ง</td></tr>
+  <tr><td>ข้อมูลบนเซิร์ฟเวอร์ของเรา</td><td>ไม่มี เพราะเราไม่มีเซิร์ฟเวอร์</td><td>ไม่มีอะไรให้ลบ</td></tr>
+</table>
+
+<h2>ระยะเวลาเก็บข้อมูล</h2>
+<p>ข้อมูลอยู่บนเครื่องของคุณนานเท่าที่คุณเก็บไว้ ไม่นานไปกว่านั้น ไม่มีสำเนาบนเซิร์ฟเวอร์และไม่มีสำรองข้อมูลของเรา การลบในแอป การล้างพื้นที่จัดเก็บ หรือการถอนการติดตั้ง จึงเป็นการสิ้นสุดโดยสมบูรณ์ หากคุณเปิดระบบสำรองข้อมูลของ Android ไว้ เครื่องของคุณอาจเก็บข้อมูลแอปไว้ในการสำรองข้อมูลบัญชี Google ตามเงื่อนไขของ Google ซึ่งเป็นความสามารถของระบบปฏิบัติการที่เราไม่เห็นและไม่ได้ควบคุม</p>
+
+<h2>ต้องการความช่วยเหลือ</h2>
+<p>หากลบข้อมูลไม่สำเร็จ เขียนมาที่ <a href="mailto:overdrivelabs998@gmail.com">overdrivelabs998@gmail.com</a> แล้วเราจะช่วยเหลือ ดูเพิ่มเติมที่ <a href="./">นโยบายความเป็นส่วนตัว</a></p>
+
+<hr>
+
+<!-- ==================== 日本語 ==================== -->
+<h2 id="ja" class="lang-head">日本語</h2>
+
+<p>TimeBoard（以下「本アプリ」）にはユーザーアカウントがなく、当社のサーバーもありません。保存される内容はすべてお使いの端末の中にあるため、アプリ内または Android の設定からご自身で削除でき、その場で消去されます。</p>
+
+<div class="callout">
+  <strong>削除すべきアカウントはありません。</strong>予定・プロフィール・設定の控えを当社がサーバーに保持することはないため、当社に請求していただくものも、待機期間もありません。端末上での削除がそのまま完全な削除であり、元に戻すことはできません。本バージョンの TimeBoard にはバックアップも同期もないため、ほかのどこにも残りません。
+</div>
+
+<h2>予定を 1 件削除する</h2>
+<ul>
+  <li><strong>Board</strong> で、その予定のカードの <strong>⋮</strong> メニューから <strong>Delete</strong> を選びます。</li>
+  <li>または予定を開き、詳細画面の <strong>Delete</strong> をタップします（上部の <strong>⋮</strong> メニューにもあります）。</li>
+</ul>
+<p>いずれの場合も <strong>「Delete event?」</strong>という確認が予定のタイトルとともに表示されます。<strong>Delete</strong> をタップすると、その予定と、予約されていたリマインダーが削除されます。</p>
+
+<h2>プロフィールごとまとめて削除する</h2>
+<ol class="steps">
+  <li><strong>More</strong> タブを開きます。</li>
+  <li>上部の<strong>プロフィールカード</strong>をタップして <strong>Profiles</strong> を開きます。</li>
+  <li>削除したいプロフィールをタップすると、<strong>Rename profile</strong> のダイアログが開きます。</li>
+  <li><strong>Delete</strong> をタップし、確認します。</li>
+</ol>
+<p>これでそのプロフィールと、そこに属するすべての予定、および保存データが読み取れなくなった場合に備えて残していた控えが削除されます。<strong>Delete</strong> はプロフィールが 2 つ以上あるときだけ表示されます。最後の 1 つは削除できないため、そのプロフィールを空にするには予定を 1 件ずつ削除するか、後述のストレージ消去をご利用ください。</p>
+
+<h2>Demo プロフィールとサンプル予定を消す</h2>
+<ol class="steps">
+  <li><strong>More</strong> → <strong>Settings</strong> を開きます。</li>
+  <li><strong>Demo data</strong> の <strong>Demo mode</strong> をオフにします。</li>
+  <li><strong>「Turn off demo data?」</strong>の確認で承認します。いくつのサンプル予定が一緒に消えるかも表示されます。</li>
+</ol>
+<p>Demo プロフィールとそのサンプル予定が削除され、その前に使っていたプロフィールに戻ります。</p>
+
+<h2>すべてを一度に消去する</h2>
+<ul>
+  <li><strong>TimeBoard をアンインストールする。</strong>アプリ専用ストレージも一緒に削除されます。</li>
+  <li><strong>またはストレージを消去する:</strong> Android の<strong>設定</strong> → <strong>アプリ</strong> → <strong>TimeBoard</strong> → <strong>ストレージ</strong> → <strong>ストレージを消去</strong>。</li>
+</ul>
+<p>どちらもすべての予定、プロフィール、設定を完全に消去し、アプリは新規インストールの状態から始まります。</p>
+
+<h2>保持されるものと、その保持者</h2>
+<table>
+  <tr><th>データ</th><th>保存場所</th><th>削除方法</th></tr>
+  <tr><td>予定・プロフィール・設定</td><td>端末内のみ</td><td>アプリ内で削除、ストレージを消去、またはアンインストール</td></tr>
+  <tr><td>予約済みのリマインダー</td><td>端末内のみ</td><td>予定の削除、またはアプリの削除とともに消えます</td></tr>
+  <tr><td>当社サーバー上のデータ</td><td>ありません（サーバー自体がありません）</td><td>削除するものがありません</td></tr>
+</table>
+
+<h2>保持期間</h2>
+<p>データはユーザーが残している間だけ端末に保存され、それ以上は保持されません。サーバー上の控えも当社のバックアップもないため、アプリ内での削除、ストレージの消去、アンインストールによって完全に終了します。Android のシステムバックアップを有効にしている場合、端末が Google の規約に基づき Google アカウントのバックアップにアプリデータを保持することがあります。これは OS の機能であり、当社が見ることも制御することもできません。</p>
+
+<h2>お困りの場合</h2>
+<p>削除が完了しない場合は <a href="mailto:overdrivelabs998@gmail.com">overdrivelabs998@gmail.com</a> までご連絡ください。<a href="./">プライバシーポリシー</a>もあわせてご覧ください。</p>
+
+<hr>
+
+<!-- ==================== 한국어 ==================== -->
+<h2 id="ko" class="lang-head">한국어</h2>
+
+<p>TimeBoard(이하 "앱")에는 계정 기능이 없고, 저희가 운영하는 서버도 없습니다. 앱이 저장하는 모든 것은 이용자의 기기 안에 있으므로, 앱 안에서 또는 Android 설정에서 직접 지우실 수 있고 즉시 사라집니다.</p>
+
+<div class="callout">
+  <strong>삭제할 계정이 없습니다.</strong> 저희는 이용자의 일정, 프로필, 설정 사본을 어떤 서버에도 보관하지 않으므로 저희에게 요청하실 것도, 대기 기간도 없습니다. 기기에서의 삭제가 곧 완전한 삭제이며, 되돌릴 수 없습니다. 이 버전의 TimeBoard에는 백업도 동기화도 없어 다른 어디에도 남지 않습니다.
+</div>
+
+<h2>일정 하나 삭제하기</h2>
+<ul>
+  <li><strong>Board</strong>에서 해당 일정 카드의 <strong>⋮</strong> 메뉴를 눌러 <strong>Delete</strong>를 선택합니다.</li>
+  <li>또는 일정을 열고 상세 화면의 <strong>Delete</strong>를 누릅니다(위쪽 <strong>⋮</strong> 메뉴에도 있습니다).</li>
+</ul>
+<p>어느 쪽이든 앱이 일정 제목과 함께 <strong>"Delete event?"</strong>라고 확인을 묻습니다. <strong>Delete</strong>를 누르면 그 일정과 예약돼 있던 알림이 함께 삭제됩니다.</p>
+
+<h2>프로필과 그 안의 모든 것 삭제하기</h2>
+<ol class="steps">
+  <li><strong>More</strong> 탭으로 갑니다.</li>
+  <li>맨 위의 <strong>프로필 카드</strong>를 눌러 <strong>Profiles</strong>를 엽니다.</li>
+  <li>지우려는 프로필을 누르면 <strong>Rename profile</strong> 대화상자가 열립니다.</li>
+  <li><strong>Delete</strong>를 누르고 확인합니다.</li>
+</ol>
+<p>이렇게 하면 해당 프로필과 그 안의 모든 일정, 그리고 저장된 목록을 읽지 못했을 때를 대비해 앱이 남겨 둔 사본까지 함께 지워집니다. <strong>Delete</strong> 버튼은 프로필이 둘 이상일 때만 나타납니다. 마지막 하나 남은 프로필은 삭제할 수 없으므로, 그 프로필을 비우려면 일정을 하나씩 지우거나 아래 방법으로 앱 저장 공간을 지우시면 됩니다.</p>
+
+<h2>Demo 프로필과 샘플 일정 없애기</h2>
+<ol class="steps">
+  <li><strong>More</strong> → <strong>Settings</strong>로 이동합니다.</li>
+  <li><strong>Demo data</strong> 항목에서 <strong>Demo mode</strong>를 끕니다.</li>
+  <li><strong>"Turn off demo data?"</strong> 확인 창에서 승인합니다. 함께 사라질 샘플 일정의 개수도 함께 표시됩니다.</li>
+</ol>
+<p>Demo 프로필과 샘플 일정이 삭제되고, 그전에 쓰던 프로필로 돌아갑니다.</p>
+
+<h2>한 번에 전부 지우기</h2>
+<ul>
+  <li><strong>TimeBoard를 삭제(제거)합니다.</strong> Android가 앱 전용 저장 공간도 함께 지웁니다.</li>
+  <li><strong>또는 저장 공간을 지웁니다:</strong> Android <strong>설정</strong> → <strong>앱</strong> → <strong>TimeBoard</strong> → <strong>저장공간</strong> → <strong>저장공간 지우기</strong>.</li>
+</ul>
+<p>두 방법 모두 모든 일정, 프로필, 설정을 완전히 지우며, 앱은 새로 설치한 상태로 다시 시작됩니다.</p>
+
+<h2>무엇이, 어디에 남는가</h2>
+<table>
+  <tr><th>데이터</th><th>저장 위치</th><th>삭제 방법</th></tr>
+  <tr><td>일정, 프로필, 설정</td><td>이용자의 기기에만</td><td>앱에서 삭제, 저장공간 지우기, 또는 앱 삭제</td></tr>
+  <tr><td>예약된 알림</td><td>이용자의 기기에만</td><td>일정과 함께, 또는 앱 삭제와 함께 제거됨</td></tr>
+  <tr><td>저희 서버의 데이터</td><td>없음 — 서버 자체가 없습니다</td><td>지울 것이 없습니다</td></tr>
+</table>
+
+<h2>보관 기간</h2>
+<p>데이터는 이용자가 남겨 두는 동안에만 기기에 남고, 그 이상은 아닙니다. 서버 사본도, 저희 쪽 백업도 없으므로 앱에서 삭제하거나 저장공간을 지우거나 앱을 삭제하면 완전히 끝납니다. Android 시스템 백업을 켜 두셨다면 기기가 Google의 약관에 따라 앱 데이터를 Google 계정 백업에 보관할 수 있습니다. 이는 운영체제의 기능이며 저희가 보거나 제어하지 않습니다.</p>
+
+<h2>도움이 필요하신가요?</h2>
+<p>삭제가 잘 되지 않으면 <a href="mailto:overdrivelabs998@gmail.com">overdrivelabs998@gmail.com</a>로 연락 주시면 도와드리겠습니다. <a href="./">개인정보처리방침</a>도 함께 참고해 주세요.</p>
