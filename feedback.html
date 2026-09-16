@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TimeBoard – Feedback</title>
+<style>
+  :root { --fg:#1F1D1A; --bg:#FFFFFF; --muted:#6B6259; --rule:#E2D9CD;
+          --accent:#A8583C; --chip:rgba(127,127,127,.13); --field:#F7F4EF;
+          --star:#F2A83B; --ok:#4CAF7D; --err:#E5484D;
+          --rose:#E4717A; --sand:#E0A23C; --sky:#4A90E2; --mint:#4CAF7D; --stone:#8A857D; }
+  @media (prefers-color-scheme: dark) {
+    :root { --fg:#F1EDE6; --bg:#161514; --muted:#A79C8E; --rule:#3A352F;
+            --accent:#E8926A; --chip:rgba(255,255,255,.09); --field:#201E1C; }
+  }
+  * { box-sizing: border-box; }
+  body { font-family: system-ui, -apple-system, "Segoe UI", Roboto,
+         "Noto Sans Thai", sans-serif;
+         max-width: 640px; margin: 0 auto; padding: 24px 20px 72px;
+         line-height: 1.6; color: var(--fg); background: var(--bg); }
+  h1 { font-size: 1.55em; line-height: 1.3; margin: 0 0 .2em; }
+  h1 b { color: var(--accent); font-weight: 600; }
+  .sub { color: var(--muted); margin: 0 0 1.6em; }
+  a { color: var(--accent); }
+  form { display: grid; gap: 20px; }
+  fieldset { border: 0; padding: 0; margin: 0; min-width: 0; display: grid; gap: 8px; }
+  legend, .l { font-size: .8em; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+               color: var(--muted); padding: 0; }
+  .types { display: flex; flex-wrap: wrap; gap: 8px; }
+  .types input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .types label { height: 36px; padding: 0 14px; border-radius: 999px; display: inline-flex; align-items: center;
+                 gap: 7px; font-size: .92em; border: 1px solid var(--rule); background: var(--chip); cursor: pointer; }
+  .types label i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+  .types input:checked + label { border-color: var(--c); box-shadow: inset 0 0 0 1px var(--c); background: var(--bg); }
+  .types input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: 2px; }
+  .stars { display: flex; align-items: center; gap: 2px; }
+  .stars input { position: absolute; opacity: 0; width: 0; height: 0; }
+  .stars label { width: 40px; height: 40px; display: grid; place-items: center; font-size: 26px;
+                 color: var(--rule); cursor: pointer; border-radius: 8px; }
+  .stars label.on { color: var(--star); }
+  .stars input:focus-visible + label { outline: 2px solid var(--accent); }
+  .hint { color: var(--muted); font-size: .9em; margin-left: 8px; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 460px) { .row { grid-template-columns: 1fr; } }
+  input[type=text], select, textarea { font: inherit; color: var(--fg); background: var(--field);
+    border: 1px solid var(--rule); border-radius: 10px; padding: 10px 12px; width: 100%; }
+  input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(168,88,60,.2); }
+  textarea { min-height: 130px; resize: vertical; }
+  .count { font-size: .8em; color: var(--muted); text-align: right; }
+  .actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  button { font: inherit; font-weight: 600; border-radius: 999px; height: 44px; padding: 0 22px; cursor: pointer;
+           border: 1px solid var(--rule); background: var(--chip); color: var(--fg); }
+  button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+  .status { font-size: .9em; color: var(--muted); flex-basis: 100%; }
+  .status.ok { color: var(--ok); } .status.err { color: var(--err); }
+  .callout { border-left: 3px solid var(--accent); background: var(--chip); padding: 12px 16px;
+             margin: 2em 0 0; border-radius: 0 6px 6px 0; font-size: .92em; color: var(--muted); }
+  .foot { color: var(--muted); font-size: .9em; margin-top: 2.4em; }
+</style>
+</head>
+<body>
+
+<h1>Time<b>Board</b> · Feedback</h1>
+<p class="sub">บอกเราหน่อยว่าแอปเป็นยังไงบ้าง · Tell us how the app is working for you</p>
+
+<form id="f" novalidate>
+  <fieldset>
+    <legend>ประเภท · Type</legend>
+    <div class="types">
+      <input type="radio" name="type" id="t-bug" value="Bug"><label for="t-bug" style="--c:var(--rose)"><i></i>บั๊ก · Bug</label>
+      <input type="radio" name="type" id="t-idea" value="Feature request" checked><label for="t-idea" style="--c:var(--sand)"><i></i>อยากได้ฟีเจอร์ · Feature</label>
+      <input type="radio" name="type" id="t-ux" value="Hard to use"><label for="t-ux" style="--c:var(--sky)"><i></i>ใช้งานยาก · Usability</label>
+      <input type="radio" name="type" id="t-praise" value="Praise"><label for="t-praise" style="--c:var(--mint)"><i></i>ชอบมาก · Praise</label>
+      <input type="radio" name="type" id="t-other" value="Other"><label for="t-other" style="--c:var(--stone)"><i></i>อื่น ๆ · Other</label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>คะแนนโดยรวม · Rating</legend>
+    <div class="stars" id="stars">
+      <input type="radio" name="rating" id="r1" value="1"><label for="r1">★</label>
+      <input type="radio" name="rating" id="r2" value="2"><label for="r2">★</label>
+      <input type="radio" name="rating" id="r3" value="3"><label for="r3">★</label>
+      <input type="radio" name="rating" id="r4" value="4"><label for="r4">★</label>
+      <input type="radio" name="rating" id="r5" value="5"><label for="r5">★</label>
+      <span class="hint" id="hint">ไม่บังคับ · optional</span>
+    </div>
+  </fieldset>
+
+  <div class="row">
+    <fieldset>
+      <label class="l" for="screen">หน้าจอ · Screen</label>
+      <select id="screen">
+        <option value="">ไม่ระบุ · Not specified</option>
+        <option>Board</option><option>Calendar</option><option>Timeline</option>
+        <option>Every Day</option><option>Life Dots</option><option>More / Settings</option>
+        <option>Add / Edit Event</option><option>Notifications</option><option>Widget</option>
+      </select>
+    </fieldset>
+    <fieldset>
+      <label class="l" for="device">เครื่อง · Device</label>
+      <input type="text" id="device" placeholder="e.g. Pixel 8 · Android 15">
+    </fieldset>
+  </div>
+
+  <fieldset>
+    <label class="l" for="message">รายละเอียด · Details</label>
+    <textarea id="message" maxlength="2000" placeholder="เกิดอะไรขึ้น ทำอย่างไรถึงเจอ หรืออยากให้เพิ่มอะไร · What happened, how to reproduce, or what you'd like added"></textarea>
+    <div class="count" id="count">0 / 2000</div>
+  </fieldset>
+
+  <fieldset>
+    <label class="l" for="name">ชื่อ · Name (ไม่บังคับ · optional)</label>
+    <input type="text" id="name" maxlength="60">
+  </fieldset>
+
+  <div class="actions">
+    <button type="submit" class="primary" id="send">ส่งทางอีเมล · Send by email</button>
+    <button type="button" id="copy">คัดลอกข้อความ · Copy text</button>
+    <span class="status" id="status"></span>
+  </div>
+</form>
+
+<div class="callout">
+  ปุ่ม “ส่งทางอีเมล” จะเปิดแอปอีเมลของคุณพร้อมข้อความที่กรอกไว้ ส่งถึง <a href="mailto:overdrivelabs998@gmail.com">overdrivelabs998@gmail.com</a>
+  หน้านี้ไม่เก็บหรือส่งข้อมูลใด ๆ เอง<br>
+  “Send by email” opens your mail app with the text filled in, addressed to overdrivelabs998@gmail.com. This page stores and transmits nothing on its own.
+</div>
+
+<p class="foot"><a href="index.html">Privacy Policy</a> · <a href="delete-data.html">Delete your data</a> · App version 0.3.0</p>
+
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const form = $('f'), status = $('status');
+  const stars = [...$('stars').querySelectorAll('label')];
+  const paint = n => { stars.forEach((l, i) => l.classList.toggle('on', i < n)); $('hint').textContent = n ? n + ' / 5' : 'ไม่บังคับ · optional'; };
+  $('stars').addEventListener('change', e => paint(+e.target.value));
+  $('message').addEventListener('input', e => { $('count').textContent = e.target.value.length + ' / 2000'; });
+
+  try { const d = JSON.parse(localStorage.getItem('tb-feedback-draft') || 'null');
+        if (d) { $('message').value = d.message || ''; $('name').value = d.name || ''; $('device').value = d.device || '';
+                 $('count').textContent = $('message').value.length + ' / 2000'; } } catch (e) {}
+  const save = () => { try { localStorage.setItem('tb-feedback-draft', JSON.stringify({ message: $('message').value, name: $('name').value, device: $('device').value })); } catch (e) {} };
+  ['message', 'name', 'device'].forEach(id => $(id).addEventListener('input', save));
+
+  function compose() {
+    const message = $('message').value.trim();
+    if (!message) { status.className = 'status err'; status.textContent = 'พิมพ์รายละเอียดสักหน่อยก่อนส่ง · Please write some details first'; $('message').focus(); return null; }
+    const type = form.type.value, rating = form.rating.value;
+    const lines = [
+      'Type: ' + type,
+      'Rating: ' + (rating ? rating + '/5' : '-'),
+      'Screen: ' + ($('screen').value || '-'),
+      'Device: ' + ($('device').value.trim() || '-'),
+      'App: TimeBoard 0.3.0 (com.overdrivelabs.timeboard)',
+      'Name: ' + ($('name').value.trim() || '-'),
+      '', message,
+    ];
+    return { subject: '[TimeBoard] ' + type + (rating ? ' ' + '★'.repeat(+rating) : ''), body: lines.join('\n') };
+  }
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const m = compose(); if (!m) return;
+    location.href = 'mailto:overdrivelabs998@gmail.com?subject=' + encodeURIComponent(m.subject) + '&body=' + encodeURIComponent(m.body);
+    status.className = 'status ok';
+    status.textContent = 'เปิดแอปอีเมลแล้ว กดส่งในนั้นอีกครั้ง · Your mail app should open; press Send there. ถ้าไม่เปิด ใช้ปุ่มคัดลอกแล้ววางในอีเมลได้';
+    try { localStorage.removeItem('tb-feedback-draft'); } catch (e) {}
+  });
+
+  $('copy').addEventListener('click', async () => {
+    const m = compose(); if (!m) return;
+    const text = m.subject + '\n\n' + m.body;
+    try { await navigator.clipboard.writeText(text); status.className = 'status ok'; status.textContent = 'คัดลอกแล้ว วางส่งไปที่ overdrivelabs998@gmail.com · Copied — paste it into an email'; }
+    catch (e) { status.className = 'status err'; status.textContent = 'คัดลอกอัตโนมัติไม่ได้ เลือกข้อความแล้วคัดลอกเอง · Could not copy automatically'; }
+  });
+})();
+</script>
+</body>
+</html>
