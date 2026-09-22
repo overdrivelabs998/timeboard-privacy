@@ -1,6 +1,6 @@
 # timeboard-privacy
 
-The public privacy policy, data-deletion page and feedback form for **TimeBoard**, the Android countdown-board app published by Overdrive Labs (`com.overdrivelabs.timeboard`). Each page is a single self-contained HTML file with no external assets, available in English, ไทย, 日本語 and 한국어, and describes the app as it actually ships — currently version 0.3.0.
+The public privacy policy, data-deletion page and feedback form for **TimeBoard**, the Android countdown-board app published by Overdrive Labs (`com.overdrivelabs.timeboard`). Each page is a single self-contained HTML file with no external assets, available in English, ไทย, 日本語 and 한국어, and describes the app as it actually ships — currently version 0.6.1.
 
 Published at **https://overdrivelabs998.github.io/timeboard-privacy/**:
 
